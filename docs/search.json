@@ -1,0 +1,219 @@
+[
+  {
+    "objectID": "site_R.html#tidymodels",
+    "href": "site_R.html#tidymodels",
+    "title": "",
+    "section": "Tidymodels",
+    "text": "Tidymodels\n\ntidymodels est une collection de packages de modélisation qui est semblable à tidyverse. Créé par l’auteur de caret : Max Kuhn.\n\n\n\nlibrary(tidymodels) \n\n## ── Attaching packages ─────────────────────────── tidymodels ## 0.1.4 ──\n## ✔ broom        0.7.11     ✔ recipes      0.1.17\n## ✔ dials        0.0.10     ✔ rsample      0.1.1 \n## ✔ dplyr        1.0.7      ✔ tibble       3.1.7 \n## ✔ ggplot2      3.3.6      ✔ tidyr        1.1.4 \n## ✔ infer        1.0.0      ✔ tune         0.1.6 \n## ✔ modeldata    0.1.1      ✔ workflows    0.2.4 \n## ✔ parsnip      0.1.7      ✔ workflowsets 0.1.0 \n## ✔ purrr        0.3.4      ✔ yardstick    0.0.9 \n## ── Conflicts ───────────────────────────────────────── ## tidymodels_conflicts() ──\n## ✖ purrr::discard() masks scales::discard()\n## ✖ dplyr::filter()  masks stats::filter()\n## ✖ dplyr::lag()     masks stats::lag()\n## ✖ recipes::step()  masks stats::step()\n\n\n\n\nrsample : Data splitting et resampling\nbroom : Manipulation des données output\nrecipes : Préparation des données avant modélisation\nparsnip : Collection de modèles\nyardstick : Evaluation metrics\ndials/tune : Tuning des paramètres\nworklows : Création de workflow …"
+  },
+  {
+    "objectID": "site_R.html#objectifs",
+    "href": "site_R.html#objectifs",
+    "title": "",
+    "section": "Objectifs",
+    "text": "Objectifs\n\n\nEncourager les bonnes méthodologies\n\n\n\n\nConstruire une structure stable\n\n\n\n\nPermettre une grande variété de méthodologies"
+  },
+  {
+    "objectID": "site_R.html#comment-préparer-les-données-avec-tidymodels",
+    "href": "site_R.html#comment-préparer-les-données-avec-tidymodels",
+    "title": "",
+    "section": "Comment préparer les données avec tidymodels",
+    "text": "Comment préparer les données avec tidymodels\nstep_*() https://recipes.tidymodels.org/reference/"
+  },
+  {
+    "objectID": "site_R.html#comment-préparer-les-données-avec-tidymodels-1",
+    "href": "site_R.html#comment-préparer-les-données-avec-tidymodels-1",
+    "title": "",
+    "section": "Comment préparer les données avec tidymodels",
+    "text": "Comment préparer les données avec tidymodels\n\nstep_impute*() Imputation des données\n\nstep_impute_mean()\nstep_impute_linear()\n\nstep_log()\nstep_mutate()\nstep_sqrt()\nstep_cut()\nstep_dummy()\nstep_center()\nstep_normalize()\nstep_corr()\nstep_zv()"
+  },
+  {
+    "objectID": "site_R.html#comment-choisir-un-modèle-avec-tidymodels",
+    "href": "site_R.html#comment-choisir-un-modèle-avec-tidymodels",
+    "title": "",
+    "section": "Comment choisir un modèle avec tidymodels",
+    "text": "Comment choisir un modèle avec tidymodels\n\nChoisir un modèle\nSélectionner le mode (Si nécessaire)\nParamètrer le engine"
+  },
+  {
+    "objectID": "site_R.html#choisir-un-modèle",
+    "href": "site_R.html#choisir-un-modèle",
+    "title": "",
+    "section": "1. Choisir un modèle",
+    "text": "1. Choisir un modèle\n\nPour avoir la liste des modèles disponibles : https://www.tidymodels.org/find/parsnip/"
+  },
+  {
+    "objectID": "site_R.html#choisir-un-modèle-1",
+    "href": "site_R.html#choisir-un-modèle-1",
+    "title": "",
+    "section": "1. Choisir un modèle",
+    "text": "1. Choisir un modèle\nRégression linéaire\n\nlinear_reg(penalty = NULL, mixture = NULL)\n\n\nRandom Forest\n\nrand_forest(mtry = NULL, trees = NULL, min_n = NULL)"
+  },
+  {
+    "objectID": "site_R.html#sélectionner-le-mode",
+    "href": "site_R.html#sélectionner-le-mode",
+    "title": "",
+    "section": "2. Sélectionner le mode",
+    "text": "2. Sélectionner le mode\n\nlinear_reg() %>% \n  set_mode(mode = \"regression\")\n\n\n\nlogistic_reg() %>% \n  set_mode(mode = \"classification\")"
+  },
+  {
+    "objectID": "site_R.html#paramètrer-le-engine",
+    "href": "site_R.html#paramètrer-le-engine",
+    "title": "",
+    "section": "3. Paramètrer le engine",
+    "text": "3. Paramètrer le engine\n\nlinear_reg() %>% \n  set_engine(\"spark\" )\n\n\n\nrand_forest() %>% \n  set_engine(\"randomForest\")\n\n\n\n\nrand_forest() %>% \n  set_engine(\"ranger\")"
+  },
+  {
+    "objectID": "site_R.html#exemple-de-classification",
+    "href": "site_R.html#exemple-de-classification",
+    "title": "",
+    "section": "Exemple de classification",
+    "text": "Exemple de classification\n\n\n\n\nDonnées\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nage\ngender\nheight\nweight\nsteps\nhear_rate\ncalories\ndistance\nentropy_heart\nentropy_setps\nresting_heart\ncorr_heart_steps\nnorm_heart\nintensity_karvonen\nsd_norm_heart\nsteps_times_distance\ndevice\nactivity\n\n\n\n\n20\n1\n168\n65.4\n10.77143\n78.53130\n0.3445329\n0.0083269\n6.221612\n6.116349\n59\n1.0000000\n19.53130\n0.1385199\n1.000000\n0.0896921\napple watch\nLying\n\n\n20\n1\n168\n65.4\n11.47532\n78.45339\n3.2876255\n0.0088963\n6.221612\n6.116349\n59\n1.0000000\n19.45339\n0.1379673\n1.000000\n0.1020885\napple watch\nLying\n\n\n20\n1\n168\n65.4\n12.17922\n78.54083\n9.4840000\n0.0094658\n6.221612\n6.116349\n59\n1.0000000\n19.54083\n0.1385874\n1.000000\n0.1152865\napple watch\nLying\n\n\n20\n1\n168\n65.4\n12.88312\n78.62826\n10.1545556\n0.0100353\n6.221612\n6.116349\n59\n1.0000000\n19.62826\n0.1392075\n1.000000\n0.1292863\napple watch\nLying\n\n\n20\n1\n168\n65.4\n13.58701\n78.71569\n10.8251111\n0.0106048\n6.221612\n6.116349\n59\n0.9828157\n19.71569\n0.1398276\n0.241567\n0.1440877\napple watch\nLying\n\n\n20\n1\n168\n65.4\n14.29091\n78.80313\n11.4956667\n0.0111743\n6.221612\n6.116349\n59\n1.0000000\n19.80313\n0.1404477\n0.264722\n0.1596909\napple watch\nSitting\n\n\n\n\n\n\n\nhttps://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/ZS2Z2J"
+  },
+  {
+    "objectID": "site_R.html#exemple-de-classification-1",
+    "href": "site_R.html#exemple-de-classification-1",
+    "title": "",
+    "section": "Exemple de classification",
+    "text": "Exemple de classification\n\nset.seed(123)\ndata_split <- initial_split(df, \n                            strata = activity)\n\n\n\n\ndata_split\n\n<Analysis/Assess/Total>\n<2740/916/3656>\n\n\n\n\ntrain_data <- training(data_split) \ntest_data <- testing(data_split)\n\n\n\n\n\nnrow(train_data)\n\n[1] 2740\n\n\n\n\n\n\nnrow(test_data)\n\n[1] 916"
+  },
+  {
+    "objectID": "site_R.html#exemple-de-classification-2",
+    "href": "site_R.html#exemple-de-classification-2",
+    "title": "",
+    "section": "Exemple de classification",
+    "text": "Exemple de classification\n\ndf_rec = recipe(activity ~ . , data = train_data) \n\n\n\n\ndf_rec\n\nRecipe\n\nInputs:\n\n      role #variables\n   outcome          1\n predictor         17\n\n\n\n\n\n\nsummary(df_rec)\n\n# A tibble: 18 × 4\n   variable             type    role      source  \n   <chr>                <chr>   <chr>     <chr>   \n 1 age                  numeric predictor original\n 2 gender               numeric predictor original\n 3 height               numeric predictor original\n 4 weight               numeric predictor original\n 5 steps                numeric predictor original\n 6 hear_rate            numeric predictor original\n 7 calories             numeric predictor original\n 8 distance             numeric predictor original\n 9 entropy_heart        numeric predictor original\n10 entropy_setps        numeric predictor original\n11 resting_heart        numeric predictor original\n12 corr_heart_steps     numeric predictor original\n13 norm_heart           numeric predictor original\n14 intensity_karvonen   numeric predictor original\n15 sd_norm_heart        numeric predictor original\n16 steps_times_distance numeric predictor original\n17 device               nominal predictor original\n18 activity             nominal outcome   original"
+  },
+  {
+    "objectID": "site_R.html#exemple-de-classification-3",
+    "href": "site_R.html#exemple-de-classification-3",
+    "title": "",
+    "section": "Exemple de classification",
+    "text": "Exemple de classification\n\ndf_rec = recipe(activity ~ . , data = train_data) %>% \n  step_num2factor(gender,\n                  transform = function(x) x + 1,\n                  levels = c('femme', 'homme')) %>% \n  step_rm(device) %>% \n  step_dummy(all_nominal_predictors()) %>% \n  step_normalize(all_numeric()) %>% \n  step_zv(all_numeric()) %>% \n  step_corr(all_numeric_predictors(), threshold = 0.7)"
+  },
+  {
+    "objectID": "site_R.html#exemple-de-classification-4",
+    "href": "site_R.html#exemple-de-classification-4",
+    "title": "",
+    "section": "Exemple de classification",
+    "text": "Exemple de classification\n\ndf_rec = recipe(activity ~ . , data = train_data) %>% \n  step_num2factor(gender,\n                  transform = function(x) x + 1,\n                  levels = c('femme', 'homme')) %>% \n  step_rm(device) %>% \n  step_dummy(all_nominal_predictors()) %>% \n  step_normalize(all_numeric()) %>% \n  step_zv(all_numeric()) %>% \n  step_corr(all_numeric_predictors(), threshold = 0.7)"
+  },
+  {
+    "objectID": "site_R.html#exemple-de-classification-5",
+    "href": "site_R.html#exemple-de-classification-5",
+    "title": "",
+    "section": "Exemple de classification",
+    "text": "Exemple de classification\n\nencoded = df_rec %>%\n  prep() %>%\n  juice()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nage\nweight\nsteps\ncalories\nentropy_heart\nentropy_setps\nresting_heart\ncorr_heart_steps\nnorm_heart\nsd_norm_heart\nsteps_times_distance\nactivity\ngender_homme\n\n\n\n\n-1.040763\n-0.3697346\n-0.6229780\n0.6097959\n0.4528588\n0.3606604\n-0.806288\n1.344866\n-0.1425708\n-0.7808465\n-0.3534188\nLying\n1.06468\n\n\n-1.040763\n-0.3697346\n-0.6204065\n0.7022291\n0.4528588\n0.3606604\n-0.806288\n1.321581\n-0.1389498\n-0.8558210\n-0.3532882\nLying\n1.06468\n\n\n-1.040763\n-0.3697346\n-0.5766909\n1.3325475\n0.4528588\n0.3606604\n-0.806288\n1.344866\n-0.0773928\n-0.8535320\n-0.3499853\nLying\n1.06468\n\n\n-1.040763\n-0.3697346\n-0.5715479\n1.3292048\n0.4528588\n0.3606604\n-0.806288\n1.344866\n-0.0701508\n-0.8535320\n-0.3494623\nLying\n1.06468\n\n\n-1.040763\n-0.3697346\n-0.5664048\n1.3258620\n0.4528588\n0.3606604\n-0.806288\n1.344866\n-0.0629088\n-0.8535320\n-0.3489110\nLying\n1.06468\n\n\n-1.040763\n-0.3697346\n-0.6006315\n1.6465117\n0.4528588\n0.3606604\n-0.806288\n-1.365160\n-0.0085939\n-0.8535320\n-0.3522278\nLying\n1.06468"
+  },
+  {
+    "objectID": "site_R.html#exemple-de-classification-6",
+    "href": "site_R.html#exemple-de-classification-6",
+    "title": "",
+    "section": "Exemple de classification",
+    "text": "Exemple de classification\n\nrf_spec <- \n  rand_forest(trees = 200) %>% \n  set_engine(\"ranger\", importance = \"impurity\") %>% \n  set_mode(\"classification\")\n\n\n\n\nactivity_wflow <- \n  workflow() %>% \n  add_recipe(df_rec) %>% \n  add_model(rf_spec)\n\n\n\n\n\nactivty_fit <- \n  activity_wflow %>% \n  fit(data = train_data)"
+  },
+  {
+    "objectID": "site_R.html#exemple-classification",
+    "href": "site_R.html#exemple-classification",
+    "title": "",
+    "section": "Exemple Classification",
+    "text": "Exemple Classification\n\npredict(activty_fit, test_data)\n\n# A tibble: 916 × 1\n   .pred_class   \n   <fct>         \n 1 Lying         \n 2 Lying         \n 3 Lying         \n 4 Sitting       \n 5 Sitting       \n 6 Self Pace walk\n 7 Self Pace walk\n 8 Lying         \n 9 Lying         \n10 Lying         \n# … with 906 more rows\n# ℹ Use `print(n = ...)` to see more rows\n\n\n\n\n\nactivity_pred <- \n  augment(activty_fit, test_data)\n\n\n\n\n\ntable = activity_pred %>%\n  select(activity, \n         contains(\".pred_\"))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nactivity\n.pred_class\n.pred_Lying\n.pred_Running 3 METs\n.pred_Running 5 METs\n.pred_Running 7 METs\n.pred_Self Pace walk\n.pred_Sitting\n\n\n\n\nLying\nLying\n0.5387715\n0.0472341\n0.0284722\n0.0573968\n0.1405862\n0.1875391\n\n\nLying\nLying\n0.5102299\n0.0351925\n0.0349921\n0.0490556\n0.1203104\n0.2502196\n\n\nLying\nLying\n0.4758568\n0.0316389\n0.0357897\n0.0458353\n0.1420069\n0.2688724\n\n\nSitting\nSitting\n0.2349345\n0.0234859\n0.0163036\n0.0144325\n0.2461636\n0.4646799\n\n\nSitting\nSitting\n0.2172440\n0.0232934\n0.0165337\n0.0154325\n0.2775962\n0.4499002\n\n\nSitting\nSelf Pace walk\n0.1475176\n0.0290179\n0.0087163\n0.0044127\n0.5585466\n0.2517891"
+  },
+  {
+    "objectID": "site_R.html#exemple-classification-1",
+    "href": "site_R.html#exemple-classification-1",
+    "title": "",
+    "section": "Exemple Classification",
+    "text": "Exemple Classification\nPerformances\n\nactivity_pred %>% \n  select(-.pred_class) %>% \n  roc_auc(truth = as.factor(activity), contains(\".pred_\")) \n\n# A tibble: 1 × 3\n  .metric .estimator .estimate\n  <chr>   <chr>          <dbl>\n1 roc_auc hand_till      0.964\n\n\n\n\n\nactivity_pred %>% \n  accuracy(truth = as.factor(activity), .pred_class)\n\n# A tibble: 1 × 3\n  .metric  .estimator .estimate\n  <chr>    <chr>          <dbl>\n1 accuracy multiclass     0.782"
+  },
+  {
+    "objectID": "site_R.html#exemple-classification-2",
+    "href": "site_R.html#exemple-classification-2",
+    "title": "",
+    "section": "Exemple Classification",
+    "text": "Exemple Classification\nPerformances\n\nactivity_pred %>% \n  conf_mat(activity, .pred_class) %>% \n  autoplot(type = \"heatmap\")"
+  },
+  {
+    "objectID": "site_R.html#exemple-classification-3",
+    "href": "site_R.html#exemple-classification-3",
+    "title": "",
+    "section": "Exemple Classification",
+    "text": "Exemple Classification\nPerformances\n\nactivity_pred %>% \n  select(-.pred_class) %>% \n  roc_curve(truth = as.factor(activity), contains(\".pred_\")) %>% \n  autoplot()"
+  },
+  {
+    "objectID": "site_R.html#exemple-classification-4",
+    "href": "site_R.html#exemple-classification-4",
+    "title": "",
+    "section": "Exemple Classification",
+    "text": "Exemple Classification\nTuning parameter\n\ntune_spec <- rand_forest(\n  mtry = tune(),\n  trees = 200,\n  min_n = tune()\n) %>%\n  set_mode(\"classification\") %>%\n  set_engine(\"ranger\")\n\n\n\n\ntune_wf <- workflow() %>%\n  add_recipe(df_rec) %>% \n  add_model(tune_spec)\n\n\n\n\n\n\n\n\nset.seed(100)\ncv_folds <-\n  vfold_cv(train_data, \n            v = 3, \n           strata = activity)"
+  },
+  {
+    "objectID": "site_R.html#exemple-classification-5",
+    "href": "site_R.html#exemple-classification-5",
+    "title": "",
+    "section": "Exemple Classification",
+    "text": "Exemple Classification\nTuning parameter\n\nset.seed(345)\ntune_res <- tune_grid(\n  tune_wf,\n  resamples = cv_folds,\n  grid = 20\n)"
+  },
+  {
+    "objectID": "site_R.html#exemple-classification-6",
+    "href": "site_R.html#exemple-classification-6",
+    "title": "",
+    "section": "Exemple Classification",
+    "text": "Exemple Classification\nTuning parameter\n\ntune_res %>%\n  collect_metrics() %>%\n  filter(.metric == \"accuracy\") %>%\n  select(mean, min_n, mtry) %>%\n  pivot_longer(min_n:mtry,\n               values_to = \"value\",\n               names_to = \"parameter\"\n  ) %>%\n  ggplot(aes(value, mean, color = parameter)) +\n  geom_point(show.legend = FALSE) +\n  facet_wrap(~parameter, scales = \"free_x\") +\n  labs(x = NULL, y = \"ACC\")"
+  },
+  {
+    "objectID": "site_R.html#exemple-classification-7",
+    "href": "site_R.html#exemple-classification-7",
+    "title": "",
+    "section": "Exemple Classification",
+    "text": "Exemple Classification\nTuning parameter\n\nrf_grid <- grid_regular(\n  min_n(range = c(1, 8)),\n  mtry(range = c(9, 20)),\n  levels = 2 # nombre de niveaux par paramètre\n)\n\n\n\n\nset.seed(456)\nregular_res <- tune_grid(\n  tune_wf,\n  resamples = cv_folds,\n  grid = rf_grid\n)"
+  },
+  {
+    "objectID": "site_R.html#exemple-classification-8",
+    "href": "site_R.html#exemple-classification-8",
+    "title": "",
+    "section": "Exemple Classification",
+    "text": "Exemple Classification\nTuning parameter\n\nregular_res %>%\n  collect_metrics() %>%\n  filter(.metric == \"accuracy\") %>%\n  select(mean, min_n, mtry) %>%\n  pivot_longer(min_n:mtry,\n               values_to = \"value\",\n               names_to = \"parameter\"\n  ) %>%\n  ggplot(aes(value, mean, color = parameter)) +\n  geom_point(show.legend = FALSE) +\n  facet_wrap(~parameter, scales = \"free_x\") +\n  labs(x = NULL, y = \"ACC\")"
+  },
+  {
+    "objectID": "site_R.html#exemple-classification-9",
+    "href": "site_R.html#exemple-classification-9",
+    "title": "",
+    "section": "Exemple Classification",
+    "text": "Exemple Classification\nTuning parameter\n\nbest_acc <- select_best(regular_res, \"accuracy\")\n\nfinal_rf <- finalize_model(\n  tune_spec,\n  best_acc\n)"
+  },
+  {
+    "objectID": "site_R.html#exemple-classification-10",
+    "href": "site_R.html#exemple-classification-10",
+    "title": "",
+    "section": "Exemple Classification",
+    "text": "Exemple Classification\nFinalisation du workflow\n\nfinal_wf <- workflow() %>%\n  add_recipe(df_rec) %>%\n  add_model(final_rf)\n\n\n\n\nfinal_res <- final_wf %>%\n  last_fit(data_split) # train sur train et evalue sur test"
+  },
+  {
+    "objectID": "site_R.html#exemple-classification-11",
+    "href": "site_R.html#exemple-classification-11",
+    "title": "",
+    "section": "Exemple Classification",
+    "text": "Exemple Classification\nPerformances\n\nfinal_res %>% \n  collect_metrics()\n\n# A tibble: 2 × 4\n  .metric  .estimator .estimate .config             \n  <chr>    <chr>          <dbl> <chr>               \n1 accuracy multiclass     0.800 Preprocessor1_Model1\n2 roc_auc  hand_till      0.969 Preprocessor1_Model1"
+  },
+  {
+    "objectID": "site_R.html#exemple-classification-12",
+    "href": "site_R.html#exemple-classification-12",
+    "title": "",
+    "section": "Exemple Classification",
+    "text": "Exemple Classification\nPerformances\n\nfinal_res %>% \n  collect_predictions() %>% \n  conf_mat(activity, .pred_class) %>% \n  autoplot(type = \"heatmap\")"
+  },
+  {
+    "objectID": "site_R.html#exemple-classification-13",
+    "href": "site_R.html#exemple-classification-13",
+    "title": "",
+    "section": "Exemple Classification",
+    "text": "Exemple Classification\nPerformances\n\nfinal_res %>% \n  collect_predictions() %>% \n  select(-.pred_class) %>% \n  roc_curve(truth = as.factor(activity), contains(\".pred_\")) %>% \n  autoplot()"
+  },
+  {
+    "objectID": "site_R.html#exemple-classification-14",
+    "href": "site_R.html#exemple-classification-14",
+    "title": "",
+    "section": "Exemple Classification",
+    "text": "Exemple Classification\nEnregistrement du modèle\n\nfinal_activity_model = final_res %>%\n  extract_workflow()\n\nsaveRDS(final_activity_model, here::here(\"data\", \"activity_wf_model.rds\"))\n\n\n\ngithub.com/clem_rxx"
+  }
+]

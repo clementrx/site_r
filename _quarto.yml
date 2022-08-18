@@ -1,5 +1,7 @@
 project:
-  title: "site_presentation"
+  title: "site_R"
+  type: website
+  output-dir: docs
 
 editor: visual
 

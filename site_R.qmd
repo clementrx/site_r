@@ -1,0 +1,626 @@
+---
+# title: "Présentation de TidyModels"
+# subtitle: "R addict"
+# author: "Clément Rieux"
+# date: '22 Septembre 2022'
+format: 
+  revealjs:
+    footer: "[github.com/clem_rxx](https://clem_git)&nbsp;&nbsp;&nbsp;"
+    theme: [custom.scss]
+    code-copy: true
+    center-title-slide: false
+    highlight-style: a11y
+    code-link: true
+    code-overflow: wrap
+    height: 1080
+    width: 1600
+execute: 
+  eval: true
+  echo: true
+  freeze: auto
+---
+
+<h1>Présentation de `TidyModels`</h1>
+
+<h2>R addict</h2>
+
+<hr>
+
+<h3>Clément Rieux, consultant en data science chez EDF</h3>
+
+<h3>22 Septembre 2022</h3>
+
+<br>
+
+<h3>
+
+`r fontawesome::fa("github", "black")`   [github.com/clem_rxx/presentation](https://github.com/clem/pres)
+
+![](https://raw.githubusercontent.com/rstudio/hex-stickers/master/SVG/tidymodels.svg){.absolute top="425" left="1100" width="300"}
+
+## Tidymodels
+
+> **tidymodels** est une collection de packages de modélisation qui est semblable à tidyverse. Créé par l'auteur de **caret** : Max Kuhn.
+
+. . .
+
+```{r}
+library(tidymodels) 
+
+## ── Attaching packages ─────────────────────────── tidymodels ## 0.1.4 ──
+## ✔ broom        0.7.11     ✔ recipes      0.1.17
+## ✔ dials        0.0.10     ✔ rsample      0.1.1 
+## ✔ dplyr        1.0.7      ✔ tibble       3.1.7 
+## ✔ ggplot2      3.3.6      ✔ tidyr        1.1.4 
+## ✔ infer        1.0.0      ✔ tune         0.1.6 
+## ✔ modeldata    0.1.1      ✔ workflows    0.2.4 
+## ✔ parsnip      0.1.7      ✔ workflowsets 0.1.0 
+## ✔ purrr        0.3.4      ✔ yardstick    0.0.9 
+## ── Conflicts ───────────────────────────────────────── ## tidymodels_conflicts() ──
+## ✖ purrr::discard() masks scales::discard()
+## ✖ dplyr::filter()  masks stats::filter()
+## ✖ dplyr::lag()     masks stats::lag()
+## ✖ recipes::step()  masks stats::step()
+```
+
+. . .
+
+-   `rsample` : Data splitting et resampling
+-   `broom` : Manipulation des données output
+-   `recipes` : Préparation des données avant modélisation
+-   `parsnip` : Collection de modèles
+-   `yardstick` : Evaluation metrics
+-   `dials/tune` : Tuning des paramètres
+-   `worklows` : Création de workflow ...
+
+## Objectifs
+
+. . .
+
+-   Encourager les bonnes méthodologies
+
+. . .
+
+-   Construire une structure stable
+
+. . .
+
+-   Permettre une grande variété de méthodologies
+
+## Comment préparer les données avec tidymodels
+
+step\_\*() <https://recipes.tidymodels.org/reference/>
+
+<iframe src="https://recipes.tidymodels.org/reference/" width="100%" height="70%" frameBorder="0">
+
+</iframe>
+
+## Comment préparer les données avec tidymodels
+
+-   `step_impute*()` Imputation des données
+    -   `step_impute_mean()`
+    -   `step_impute_linear()`
+-   `step_log()`
+-   `step_mutate()`
+-   `step_sqrt()`
+-   `step_cut()`
+-   `step_dummy()`
+-   `step_center()`
+-   `step_normalize()`
+-   `step_corr()`
+-   `step_zv()`
+
+## Comment choisir un modèle avec tidymodels
+
+1.  Choisir un modèle
+2.  Sélectionner le mode (Si nécessaire)
+3.  Paramètrer le engine
+
+## 1. Choisir un modèle
+
+. . .
+
+Pour avoir la liste des modèles disponibles : <https://www.tidymodels.org/find/parsnip/>
+
+<iframe src="https://www.tidymodels.org/find/parsnip/" width="100%" height="70%" frameBorder="0">
+
+</iframe>
+
+## 1. Choisir un modèle
+
+Régression linéaire
+
+```{r}
+#| eval: false
+linear_reg(penalty = NULL, mixture = NULL)
+```
+
+. . .
+
+Random Forest
+
+```{r}
+#| eval: false
+rand_forest(mtry = NULL, trees = NULL, min_n = NULL)
+```
+
+## 2. Sélectionner le mode
+
+```{r }
+#| eval: false
+linear_reg() %>% 
+  set_mode(mode = "regression")
+```
+
+. . .
+
+```{r}
+#| eval: false
+logistic_reg() %>% 
+  set_mode(mode = "classification")
+```
+
+## 3. Paramètrer le engine
+
+```{r}
+#| eval: false
+linear_reg() %>% 
+  set_engine("spark" )
+```
+
+. . .
+
+```{r}
+#| eval: false
+rand_forest() %>% 
+  set_engine("randomForest")
+```
+
+. . .
+
+```{r}
+#| eval: false
+rand_forest() %>% 
+  set_engine("ranger")
+```
+
+## Exemple de classification
+
+```{r}
+#| echo: false
+library(tidyverse)
+data <- read_csv(file = here::here("data/aw_fb_data.csv"))
+data = data[,-c(1:2)]
+df = data %>% filter(device == 'apple watch')
+# df_fb = data %>% filter(device == 'fitbit')
+opts <- options(knitr.kable.NA = "")
+```
+
+::: {style="text-align: center"}
+`Données`
+:::
+
+<br>
+
+::: {style="font-size: 0.75em"}
+```{r}
+#| echo: false
+knitr::kable(df %>% head(6))
+```
+:::
+
+::: {style="text-align: center"}
+<https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/ZS2Z2J>
+:::
+
+## Exemple de classification
+
+```{r}
+set.seed(123)
+data_split <- initial_split(df, 
+                            strata = activity)
+
+```
+
+. . .
+
+<br>
+
+```{r}
+data_split
+```
+
+<br>
+
+```{r}
+train_data <- training(data_split) 
+test_data <- testing(data_split)
+```
+
+. . .
+
+<br>
+
+```{r}
+nrow(train_data)
+```
+
+. . .
+
+<br>
+
+```{r}
+nrow(test_data)
+```
+
+## Exemple de classification
+
+```{r}
+df_rec = recipe(activity ~ . , data = train_data) 
+```
+
+. . .
+
+<br>
+
+```{r}
+df_rec
+```
+
+. . .
+
+<br>
+
+```{r}
+summary(df_rec)
+```
+
+## Exemple de classification
+
+```{r}
+df_rec = recipe(activity ~ . , data = train_data) %>% 
+  step_num2factor(gender,
+                  transform = function(x) x + 1,
+                  levels = c('femme', 'homme')) %>% 
+  step_rm(device) %>% 
+  step_dummy(all_nominal_predictors()) %>% 
+  step_normalize(all_numeric()) %>% 
+  step_zv(all_numeric()) %>% 
+  step_corr(all_numeric_predictors(), threshold = 0.7) 
+```
+
+## Exemple de classification
+
+```{r}
+#| code-line-numbers: "2-9"
+df_rec = recipe(activity ~ . , data = train_data) %>% 
+  step_num2factor(gender,
+                  transform = function(x) x + 1,
+                  levels = c('femme', 'homme')) %>% 
+  step_rm(device) %>% 
+  step_dummy(all_nominal_predictors()) %>% 
+  step_normalize(all_numeric()) %>% 
+  step_zv(all_numeric()) %>% 
+  step_corr(all_numeric_predictors(), threshold = 0.7) 
+```
+
+## Exemple de classification
+
+```{r}
+encoded = df_rec %>%
+  prep() %>%
+  juice()
+```
+
+. . .
+
+<br>
+
+```{r}
+#| echo: false
+knitr::kable(encoded %>% head(6))
+```
+
+## Exemple de classification
+
+```{r}
+rf_spec <- 
+  rand_forest(trees = 200) %>% 
+  set_engine("ranger", importance = "impurity") %>% 
+  set_mode("classification")
+```
+
+. . .
+
+<br>
+
+```{r}
+activity_wflow <- 
+  workflow() %>% 
+  add_recipe(df_rec) %>% 
+  add_model(rf_spec)
+```
+
+. . .
+
+<br>
+
+```{r}
+activty_fit <- 
+  activity_wflow %>% 
+  fit(data = train_data)
+```
+
+## Exemple Classification
+
+```{r}
+predict(activty_fit, test_data)
+```
+
+. . .
+
+<br>
+
+```{r}
+activity_pred <- 
+  augment(activty_fit, test_data)
+```
+
+. . .
+
+<br>
+
+```{r}
+table = activity_pred %>%
+  select(activity, 
+         contains(".pred_"))
+```
+
+. . .
+
+::: {style="font-size: 0.45em"}
+```{r}
+#| echo: false
+knitr::kable(table %>% head(6))
+```
+:::
+
+## Exemple Classification
+
+### Performances
+
+```{r}
+activity_pred %>% 
+  select(-.pred_class) %>% 
+  roc_auc(truth = as.factor(activity), contains(".pred_")) 
+```
+
+. . .
+
+<br>
+
+```{r}
+activity_pred %>% 
+  accuracy(truth = as.factor(activity), .pred_class)
+```
+
+## Exemple Classification
+
+### Performances
+
+```{r}
+#| fig-align: "center"
+activity_pred %>% 
+  conf_mat(activity, .pred_class) %>% 
+  autoplot(type = "heatmap")
+```
+
+## Exemple Classification
+
+### Performances
+
+```{r}
+#| fig-align: "center"
+activity_pred %>% 
+  select(-.pred_class) %>% 
+  roc_curve(truth = as.factor(activity), contains(".pred_")) %>% 
+  autoplot()
+```
+
+## Exemple Classification
+
+### Tuning parameter
+
+```{r}
+tune_spec <- rand_forest(
+  mtry = tune(),
+  trees = 200,
+  min_n = tune()
+) %>%
+  set_mode("classification") %>%
+  set_engine("ranger")
+```
+
+. . .
+
+<br>
+
+```{r}
+tune_wf <- workflow() %>%
+  add_recipe(df_rec) %>% 
+  add_model(tune_spec)
+```
+
+. . .
+
+<br>
+
+```{r}
+#| echo: false
+doParallel::registerDoParallel()
+```
+
+```{r}
+set.seed(100)
+cv_folds <-
+  vfold_cv(train_data, 
+            v = 3, 
+           strata = activity) 
+```
+
+## Exemple Classification
+
+### Tuning parameter
+
+```{r}
+set.seed(345)
+tune_res <- tune_grid(
+  tune_wf,
+  resamples = cv_folds,
+  grid = 20
+)
+
+```
+
+## Exemple Classification
+
+### Tuning parameter
+
+```{r}
+#| fig-align: "center"
+tune_res %>%
+  collect_metrics() %>%
+  filter(.metric == "accuracy") %>%
+  select(mean, min_n, mtry) %>%
+  pivot_longer(min_n:mtry,
+               values_to = "value",
+               names_to = "parameter"
+  ) %>%
+  ggplot(aes(value, mean, color = parameter)) +
+  geom_point(show.legend = FALSE) +
+  facet_wrap(~parameter, scales = "free_x") +
+  labs(x = NULL, y = "ACC")
+```
+
+## Exemple Classification
+
+### Tuning parameter
+
+```{r}
+rf_grid <- grid_regular(
+  min_n(range = c(1, 8)),
+  mtry(range = c(9, 20)),
+  levels = 2 # nombre de niveaux par paramètre
+)
+```
+
+. . .
+
+<br>
+
+```{r}
+set.seed(456)
+regular_res <- tune_grid(
+  tune_wf,
+  resamples = cv_folds,
+  grid = rf_grid
+)
+```
+
+## Exemple Classification
+
+### Tuning parameter
+
+```{r}
+#| fig-align: "center"
+regular_res %>%
+  collect_metrics() %>%
+  filter(.metric == "accuracy") %>%
+  select(mean, min_n, mtry) %>%
+  pivot_longer(min_n:mtry,
+               values_to = "value",
+               names_to = "parameter"
+  ) %>%
+  ggplot(aes(value, mean, color = parameter)) +
+  geom_point(show.legend = FALSE) +
+  facet_wrap(~parameter, scales = "free_x") +
+  labs(x = NULL, y = "ACC")
+```
+
+## Exemple Classification
+
+### Tuning parameter
+
+```{r}
+best_acc <- select_best(regular_res, "accuracy")
+
+final_rf <- finalize_model(
+  tune_spec,
+  best_acc
+)
+```
+
+## Exemple Classification
+
+### Finalisation du workflow
+
+```{r}
+final_wf <- workflow() %>%
+  add_recipe(df_rec) %>%
+  add_model(final_rf)
+```
+
+. . .
+
+<br>
+
+```{r}
+final_res <- final_wf %>%
+  last_fit(data_split) # train sur train et evalue sur test
+```
+
+## Exemple Classification
+
+### Performances
+
+```{r}
+final_res %>% 
+  collect_metrics()
+```
+
+## Exemple Classification
+
+### Performances
+
+```{r}
+#| fig-align: "center"
+final_res %>% 
+  collect_predictions() %>% 
+  conf_mat(activity, .pred_class) %>% 
+  autoplot(type = "heatmap")
+```
+
+## Exemple Classification
+
+### Performances
+
+```{r}
+#| fig-align: "center"
+final_res %>% 
+  collect_predictions() %>% 
+  select(-.pred_class) %>% 
+  roc_curve(truth = as.factor(activity), contains(".pred_")) %>% 
+  autoplot()
+```
+
+## Exemple Classification
+
+### Enregistrement du modèle
+
+```{r}
+
+final_activity_model = final_res %>%
+  extract_workflow()
+
+saveRDS(final_activity_model, here::here("data", "activity_wf_model.rds"))
+```
