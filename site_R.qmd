@@ -118,13 +118,13 @@ step\_\*() <https://recipes.tidymodels.org/reference/>
 
 ## 1. Choisir un modèle
 
-. . .
-
 Pour avoir la liste des modèles disponibles : <https://www.tidymodels.org/find/parsnip/>
 
 <iframe src="https://www.tidymodels.org/find/parsnip/" width="100%" height="70%" frameBorder="0">
 
 </iframe>
+
+
 
 ## 1. Choisir un modèle
 
@@ -293,6 +293,21 @@ df_rec = recipe(activity ~ . , data = train_data) %>%
 
 ```{r}
 #| code-line-numbers: "2-9"
+df_rec = recipe(activity ~ . , data = train_data) %>% 
+  step_num2factor(gender,
+                  transform = function(x) x + 1,
+                  levels = c('femme', 'homme')) %>% 
+  step_rm(device) %>% 
+  step_dummy(all_nominal_predictors()) %>% 
+  step_normalize(all_numeric()) %>% 
+  step_zv(all_numeric()) %>% 
+  step_corr(all_numeric_predictors(), threshold = 0.7) 
+```
+
+## Exemple de classification
+
+```{r}
+#| code-line-numbers: "2-4|5|6|7|8|9"
 df_rec = recipe(activity ~ . , data = train_data) %>% 
   step_num2factor(gender,
                   transform = function(x) x + 1,

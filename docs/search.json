@@ -39,7 +39,7 @@
     "href": "site_R.html#choisir-un-modèle",
     "title": "",
     "section": "1. Choisir un modèle",
-    "text": "1. Choisir un modèle\n\nPour avoir la liste des modèles disponibles : https://www.tidymodels.org/find/parsnip/"
+    "text": "1. Choisir un modèle\nPour avoir la liste des modèles disponibles : https://www.tidymodels.org/find/parsnip/"
   },
   {
     "objectID": "site_R.html#choisir-un-modèle-1",
@@ -102,11 +102,18 @@
     "href": "site_R.html#exemple-de-classification-5",
     "title": "",
     "section": "Exemple de classification",
-    "text": "Exemple de classification\n\nencoded = df_rec %>%\n  prep() %>%\n  juice()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nage\nweight\nsteps\ncalories\nentropy_heart\nentropy_setps\nresting_heart\ncorr_heart_steps\nnorm_heart\nsd_norm_heart\nsteps_times_distance\nactivity\ngender_homme\n\n\n\n\n-1.040763\n-0.3697346\n-0.6229780\n0.6097959\n0.4528588\n0.3606604\n-0.806288\n1.344866\n-0.1425708\n-0.7808465\n-0.3534188\nLying\n1.06468\n\n\n-1.040763\n-0.3697346\n-0.6204065\n0.7022291\n0.4528588\n0.3606604\n-0.806288\n1.321581\n-0.1389498\n-0.8558210\n-0.3532882\nLying\n1.06468\n\n\n-1.040763\n-0.3697346\n-0.5766909\n1.3325475\n0.4528588\n0.3606604\n-0.806288\n1.344866\n-0.0773928\n-0.8535320\n-0.3499853\nLying\n1.06468\n\n\n-1.040763\n-0.3697346\n-0.5715479\n1.3292048\n0.4528588\n0.3606604\n-0.806288\n1.344866\n-0.0701508\n-0.8535320\n-0.3494623\nLying\n1.06468\n\n\n-1.040763\n-0.3697346\n-0.5664048\n1.3258620\n0.4528588\n0.3606604\n-0.806288\n1.344866\n-0.0629088\n-0.8535320\n-0.3489110\nLying\n1.06468\n\n\n-1.040763\n-0.3697346\n-0.6006315\n1.6465117\n0.4528588\n0.3606604\n-0.806288\n-1.365160\n-0.0085939\n-0.8535320\n-0.3522278\nLying\n1.06468"
+    "text": "Exemple de classification\n\ndf_rec = recipe(activity ~ . , data = train_data) %>% \n  step_num2factor(gender,\n                  transform = function(x) x + 1,\n                  levels = c('femme', 'homme')) %>% \n  step_rm(device) %>% \n  step_dummy(all_nominal_predictors()) %>% \n  step_normalize(all_numeric()) %>% \n  step_zv(all_numeric()) %>% \n  step_corr(all_numeric_predictors(), threshold = 0.7)"
   },
   {
     "objectID": "site_R.html#exemple-de-classification-6",
     "href": "site_R.html#exemple-de-classification-6",
+    "title": "",
+    "section": "Exemple de classification",
+    "text": "Exemple de classification\n\nencoded = df_rec %>%\n  prep() %>%\n  juice()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nage\nweight\nsteps\ncalories\nentropy_heart\nentropy_setps\nresting_heart\ncorr_heart_steps\nnorm_heart\nsd_norm_heart\nsteps_times_distance\nactivity\ngender_homme\n\n\n\n\n-1.040763\n-0.3697346\n-0.6229780\n0.6097959\n0.4528588\n0.3606604\n-0.806288\n1.344866\n-0.1425708\n-0.7808465\n-0.3534188\nLying\n1.06468\n\n\n-1.040763\n-0.3697346\n-0.6204065\n0.7022291\n0.4528588\n0.3606604\n-0.806288\n1.321581\n-0.1389498\n-0.8558210\n-0.3532882\nLying\n1.06468\n\n\n-1.040763\n-0.3697346\n-0.5766909\n1.3325475\n0.4528588\n0.3606604\n-0.806288\n1.344866\n-0.0773928\n-0.8535320\n-0.3499853\nLying\n1.06468\n\n\n-1.040763\n-0.3697346\n-0.5715479\n1.3292048\n0.4528588\n0.3606604\n-0.806288\n1.344866\n-0.0701508\n-0.8535320\n-0.3494623\nLying\n1.06468\n\n\n-1.040763\n-0.3697346\n-0.5664048\n1.3258620\n0.4528588\n0.3606604\n-0.806288\n1.344866\n-0.0629088\n-0.8535320\n-0.3489110\nLying\n1.06468\n\n\n-1.040763\n-0.3697346\n-0.6006315\n1.6465117\n0.4528588\n0.3606604\n-0.806288\n-1.365160\n-0.0085939\n-0.8535320\n-0.3522278\nLying\n1.06468"
+  },
+  {
+    "objectID": "site_R.html#exemple-de-classification-7",
+    "href": "site_R.html#exemple-de-classification-7",
     "title": "",
     "section": "Exemple de classification",
     "text": "Exemple de classification\n\nrf_spec <- \n  rand_forest(trees = 200) %>% \n  set_engine(\"ranger\", importance = \"impurity\") %>% \n  set_mode(\"classification\")\n\n\n\n\nactivity_wflow <- \n  workflow() %>% \n  add_recipe(df_rec) %>% \n  add_model(rf_spec)\n\n\n\n\n\nactivty_fit <- \n  activity_wflow %>% \n  fit(data = train_data)"
@@ -116,14 +123,14 @@
     "href": "site_R.html#exemple-classification",
     "title": "",
     "section": "Exemple Classification",
-    "text": "Exemple Classification\n\npredict(activty_fit, test_data)\n\n# A tibble: 916 × 1\n   .pred_class   \n   <fct>         \n 1 Lying         \n 2 Lying         \n 3 Lying         \n 4 Sitting       \n 5 Sitting       \n 6 Self Pace walk\n 7 Self Pace walk\n 8 Lying         \n 9 Lying         \n10 Lying         \n# … with 906 more rows\n# ℹ Use `print(n = ...)` to see more rows\n\n\n\n\n\nactivity_pred <- \n  augment(activty_fit, test_data)\n\n\n\n\n\ntable = activity_pred %>%\n  select(activity, \n         contains(\".pred_\"))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nactivity\n.pred_class\n.pred_Lying\n.pred_Running 3 METs\n.pred_Running 5 METs\n.pred_Running 7 METs\n.pred_Self Pace walk\n.pred_Sitting\n\n\n\n\nLying\nLying\n0.5387715\n0.0472341\n0.0284722\n0.0573968\n0.1405862\n0.1875391\n\n\nLying\nLying\n0.5102299\n0.0351925\n0.0349921\n0.0490556\n0.1203104\n0.2502196\n\n\nLying\nLying\n0.4758568\n0.0316389\n0.0357897\n0.0458353\n0.1420069\n0.2688724\n\n\nSitting\nSitting\n0.2349345\n0.0234859\n0.0163036\n0.0144325\n0.2461636\n0.4646799\n\n\nSitting\nSitting\n0.2172440\n0.0232934\n0.0165337\n0.0154325\n0.2775962\n0.4499002\n\n\nSitting\nSelf Pace walk\n0.1475176\n0.0290179\n0.0087163\n0.0044127\n0.5585466\n0.2517891"
+    "text": "Exemple Classification\n\npredict(activty_fit, test_data)\n\n# A tibble: 916 × 1\n   .pred_class   \n   <fct>         \n 1 Lying         \n 2 Lying         \n 3 Lying         \n 4 Sitting       \n 5 Sitting       \n 6 Self Pace walk\n 7 Self Pace walk\n 8 Lying         \n 9 Lying         \n10 Lying         \n# … with 906 more rows\n# ℹ Use `print(n = ...)` to see more rows\n\n\n\n\n\nactivity_pred <- \n  augment(activty_fit, test_data)\n\n\n\n\n\ntable = activity_pred %>%\n  select(activity, \n         contains(\".pred_\"))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nactivity\n.pred_class\n.pred_Lying\n.pred_Running 3 METs\n.pred_Running 5 METs\n.pred_Running 7 METs\n.pred_Self Pace walk\n.pred_Sitting\n\n\n\n\nLying\nLying\n0.5376885\n0.0374524\n0.0519196\n0.0675595\n0.1152192\n0.1901607\n\n\nLying\nLying\n0.4815575\n0.0423690\n0.0238571\n0.0590774\n0.1259127\n0.2672262\n\n\nLying\nLying\n0.4424762\n0.0297579\n0.0264365\n0.0475218\n0.1692540\n0.2845536\n\n\nSitting\nSitting\n0.2001508\n0.0182758\n0.0275615\n0.0166885\n0.2891369\n0.4481865\n\n\nSitting\nSitting\n0.1783532\n0.0185258\n0.0250794\n0.0060635\n0.3084881\n0.4634901\n\n\nSitting\nSelf Pace walk\n0.1181954\n0.0200446\n0.0149722\n0.0025635\n0.5514500\n0.2927743"
   },
   {
     "objectID": "site_R.html#exemple-classification-1",
     "href": "site_R.html#exemple-classification-1",
     "title": "",
     "section": "Exemple Classification",
-    "text": "Exemple Classification\nPerformances\n\nactivity_pred %>% \n  select(-.pred_class) %>% \n  roc_auc(truth = as.factor(activity), contains(\".pred_\")) \n\n# A tibble: 1 × 3\n  .metric .estimator .estimate\n  <chr>   <chr>          <dbl>\n1 roc_auc hand_till      0.964\n\n\n\n\n\nactivity_pred %>% \n  accuracy(truth = as.factor(activity), .pred_class)\n\n# A tibble: 1 × 3\n  .metric  .estimator .estimate\n  <chr>    <chr>          <dbl>\n1 accuracy multiclass     0.782"
+    "text": "Exemple Classification\nPerformances\n\nactivity_pred %>% \n  select(-.pred_class) %>% \n  roc_auc(truth = as.factor(activity), contains(\".pred_\")) \n\n# A tibble: 1 × 3\n  .metric .estimator .estimate\n  <chr>   <chr>          <dbl>\n1 roc_auc hand_till      0.965\n\n\n\n\n\nactivity_pred %>% \n  accuracy(truth = as.factor(activity), .pred_class)\n\n# A tibble: 1 × 3\n  .metric  .estimator .estimate\n  <chr>    <chr>          <dbl>\n1 accuracy multiclass     0.790"
   },
   {
     "objectID": "site_R.html#exemple-classification-2",
