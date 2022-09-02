@@ -1,12 +1,14 @@
 ---
 # title: "Présentation de TidyModels"
-# subtitle: "R addict"
+# subtitle: "R addicts"
 # author: "Clément Rieux"
 # date: '22 Septembre 2022'
 format: 
   revealjs:
-    footer: "[https://github.com/clementrx/site_r](https://github.com/clementrx/site_r)&nbsp;&nbsp;&nbsp;"
+    # footer: "[Scripts](https://github.com/clementrx/site_r)&nbsp;&nbsp;&nbsp;"
     theme: [custom.scss]
+    transition: fade
+    background-transition: fade
     code-copy: true
     center-title-slide: false
     highlight-style: a11y
@@ -34,36 +36,79 @@ execute:
 
 <h3>
 
-`r fontawesome::fa("github", "black")`   [github.com/clem_rxx/presentation](https://github.com/clem/pres)
-
 ![](https://raw.githubusercontent.com/rstudio/hex-stickers/master/SVG/tidymodels.svg){.absolute top="425" left="1100" width="300"}
+
+## Tidymodels
+
+> **tidymodels** est une collection de packages de modélisation qui est semblable à tidyverse. Créé par l'auteur de **caret** : Max Kuhn. La version 1.0.0 est disponible depuis le 13 juillet 2022.
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="45%"}
+
+![](https://rviews.rstudio.com/post/2019-06-14-a-gentle-intro-to-tidymodels_files/figure-html/ds.png)
+
+:::
+
+::: {.column width="45%"}
+-   Encourager les bonnes pratiques
+
+-   Simplifier la lecture des codes
+
+-   Expérimenter plusieurs modèles 
+
+-   Construire une structure stable
+
+-   Permettre une grande variété de méthodologies
+
+:::
+
+::::
 
 ## Tidymodels
 
 > **tidymodels** est une collection de packages de modélisation qui est semblable à tidyverse. Créé par l'auteur de **caret** : Max Kuhn.
 
-. . .
 
 ```{r}
 library(tidymodels) 
+```
 
-## ── Attaching packages ─────────────────────────── tidymodels ## 0.1.4 ──
-## ✔ broom        0.7.11     ✔ recipes      0.1.17
-## ✔ dials        0.0.10     ✔ rsample      0.1.1 
-## ✔ dplyr        1.0.7      ✔ tibble       3.1.7 
-## ✔ ggplot2      3.3.6      ✔ tidyr        1.1.4 
-## ✔ infer        1.0.0      ✔ tune         0.1.6 
-## ✔ modeldata    0.1.1      ✔ workflows    0.2.4 
-## ✔ parsnip      0.1.7      ✔ workflowsets 0.1.0 
-## ✔ purrr        0.3.4      ✔ yardstick    0.0.9 
-## ── Conflicts ───────────────────────────────────────── ## tidymodels_conflicts() ──
+<br>
+
+```{r}
+## ── Attaching packages ─────────────────────────────────────────────────────────────────────── tidymodels 1.0.0 ──
+```
+
+<br>
+
+```{r}
+## ✔ broom        1.0.1      ✔ recipes      1.0.1 
+## ✔ dials        1.0.0      ✔ rsample      1.1.0 
+## ✔ dplyr        1.0.10     ✔ tibble       3.1.8 
+## ✔ ggplot2      3.3.6      ✔ tidyr        1.2.0 
+## ✔ infer        1.0.3      ✔ tune         1.0.0 
+## ✔ modeldata    1.0.0      ✔ workflows    1.0.0 
+## ✔ parsnip      1.0.1      ✔ workflowsets 1.0.0 
+## ✔ purrr        0.3.4      ✔ yardstick    1.0.0 
+```
+
+<br>
+
+```{r}
+## ── Conflicts ────────────────────────────────────────────────────────────────────────── tidymodels_conflicts() ──
 ## ✖ purrr::discard() masks scales::discard()
 ## ✖ dplyr::filter()  masks stats::filter()
 ## ✖ dplyr::lag()     masks stats::lag()
 ## ✖ recipes::step()  masks stats::step()
 ```
 
-. . .
+## Tidymodels
+
+> **tidymodels** est une collection de packages de modélisation qui est semblable à tidyverse. Créé par l'auteur de **caret** : Max Kuhn.
+
 
 -   `rsample` : Data splitting et resampling
 -   `broom` : Manipulation des données output
@@ -73,31 +118,56 @@ library(tidymodels)
 -   `dials/tune` : Tuning des paramètres
 -   `worklows` : Création de workflow ...
 
-## Objectifs
 
-. . .
+## Tidymodels vs Caret
 
--   Encourager les bonnes méthodologies
+Tidymodels et Caret sont deux packages pour faire de la modélisation.
 
-. . .
+<br>
 
--   Construire une structure stable
+<br>
 
-. . .
+:::: {.columns}
 
--   Permettre une grande variété de méthodologies
+::: {.column width="45%"}
 
-## Comment préparer les données avec tidymodels
+**Caret**
 
-step\_\*() <https://recipes.tidymodels.org/reference/>
+- Sortie en 2008
+
+- Utilisation des bases R
+
+- N'est plus développé activement
+
+:::
+
+::: {.column width="45%"}
+
+**Tidymodels**
+
+- Sortie en Avril 2020 (Première version en Juillet 2018)
+
+- Utilisation via le pipe
+
+- En cours de développement 
+
+:::
+
+::::
+
+## Comment préparer les données avec tidymodels ?
+
+>step\_\*() 
+
+<https://recipes.tidymodels.org/reference/>
 
 <iframe src="https://recipes.tidymodels.org/reference/" width="100%" height="70%" frameBorder="0">
 
 </iframe>
 
-## Comment préparer les données avec tidymodels
+## Comment préparer les données avec tidymodels ?
 
--   `step_impute*()` Imputation des données
+-   `step_impute*()`
     -   `step_impute_mean()`
     -   `step_impute_linear()`
 -   `step_log()`
@@ -110,11 +180,15 @@ step\_\*() <https://recipes.tidymodels.org/reference/>
 -   `step_corr()`
 -   `step_zv()`
 
-## Comment choisir un modèle avec tidymodels
+## Comment choisir un modèle avec tidymodels ?
 
+<br/>
+
+::: {.incremental}
 1.  Choisir un modèle
 2.  Sélectionner le mode (Si nécessaire)
 3.  Paramètrer le engine
+:::
 
 ## 1. Choisir un modèle
 
@@ -124,15 +198,27 @@ Pour avoir la liste des modèles disponibles : <https://www.tidymodels.org/find/
 
 </iframe>
 
-
-
 ## 1. Choisir un modèle
+
+La première étape consiste donc à choisir un (ou plusieurs) modèle(s).
+
+. . .
 
 Régression linéaire
 
 ```{r}
 #| eval: false
 linear_reg(penalty = NULL, mixture = NULL)
+```
+
+. . .
+
+Decision tree
+
+```{r}
+#| eval: false
+decision_tree(cost_complexity = NULL, tree_depth = NULL, min_n = NULL
+)
 ```
 
 . . .
@@ -144,7 +230,24 @@ Random Forest
 rand_forest(mtry = NULL, trees = NULL, min_n = NULL)
 ```
 
+. . .
+
+Single layer neural network
+
+```{r}
+#| eval: false
+mlp(hidden_units = NULL, penalty = NULL, dropout = NULL, epochs = NULL, activation = NULL, learn_rate = NULL)
+```
+
+
 ## 2. Sélectionner le mode
+
+En effet, pour clarifier le code et également ce que l'on souhaite prédire, on indique si l'on souhaite faire une `regression` ou une `classification`.
+
+. . .
+
+<br/>
+<br/>
 
 ```{r }
 #| eval: false
@@ -154,6 +257,8 @@ linear_reg() %>%
 
 . . .
 
+<br/>
+
 ```{r}
 #| eval: false
 logistic_reg() %>% 
@@ -161,6 +266,12 @@ logistic_reg() %>%
 ```
 
 ## 3. Paramètrer le engine
+
+Enfin, on sélectionne un `engine` pour indiquer la méthode de calcul que l'on souhaite.
+
+<br/>
+
+. . .
 
 ```{r}
 #| eval: false
@@ -170,6 +281,8 @@ linear_reg() %>%
 
 . . .
 
+<br>
+
 ```{r}
 #| eval: false
 rand_forest() %>% 
@@ -178,11 +291,42 @@ rand_forest() %>%
 
 . . .
 
+<br>
+
 ```{r}
 #| eval: false
 rand_forest() %>% 
   set_engine("ranger")
 ```
+
+## Exemple de classification
+
+### Données
+
+Replication Data for: Using machine learning methods to predict physical activity types with Apple Watch and Fitbit data using indirect calorimetry as the criterion. Fuller Daniel, 2020. [(Lien)](https://doi.org/10.7910/DVN/ZS2Z2J)
+
+<br>
+<br>
+<br>
+
+L'objectif est de prédire depuis les données d'une montre connectée, si la personne la personne est allongée, assise, ou pratique une activté physique selon plusieurs intensité.
+
+## Exemple de classification
+
+Le protocol de test est composé de 40min de tapis roulant et 25min de position assise/allongée. Les données sont collectées toutes les minutes.
+Nous avons 6 activités à détecter : 
+
+-   `Lying` : Position allongée
+-   `sitting` : Position assise
+-   `walking self-paced` : Marcher à son rythme
+-   `3 METS` : Equivalent métabolique 3 fois supérieur à un niveau assis
+-   `5 METS` : Equivalent métabolique 5 fois supérieur à un niveau assis
+-   `7 METS` : Equivalent métabolique 7 fois supérieur à un niveau assis
+
+<hr>
+
+La publication de Daniel Fuller montre que le Rotation forest models est le modèle qui donne la meilleure accuracy avec **82,6%**.
+
 
 ## Exemple de classification
 
@@ -209,11 +353,13 @@ knitr::kable(df %>% head(6))
 ```
 :::
 
-::: {style="text-align: center"}
-<https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/ZS2Z2J>
-:::
 
 ## Exemple de classification
+
+Le jeu de données étant propre, nous pouvons directement split nos données en train.test via la fonction `initial_split`
+
+. . .
+
 
 ```{r}
 set.seed(123)
@@ -224,13 +370,16 @@ data_split <- initial_split(df,
 
 . . .
 
-<br>
+
+Que retrouve-t-on dans **data_split** ?
+
+. . .
+
 
 ```{r}
 data_split
 ```
 
-<br>
 
 ```{r}
 train_data <- training(data_split) 
@@ -239,7 +388,6 @@ test_data <- testing(data_split)
 
 . . .
 
-<br>
 
 ```{r}
 nrow(train_data)
@@ -247,7 +395,6 @@ nrow(train_data)
 
 . . .
 
-<br>
 
 ```{r}
 nrow(test_data)
@@ -255,13 +402,15 @@ nrow(test_data)
 
 ## Exemple de classification
 
+Ensuite, nous allons défnir notre modèle :
+
+. . .
+
 ```{r}
 df_rec = recipe(activity ~ . , data = train_data) 
 ```
 
 . . .
-
-<br>
 
 ```{r}
 df_rec
@@ -269,13 +418,15 @@ df_rec
 
 . . .
 
-<br>
-
 ```{r}
 summary(df_rec)
 ```
 
 ## Exemple de classification
+
+Un peu de transformation ...
+
+<br>
 
 ```{r}
 df_rec = recipe(activity ~ . , data = train_data) %>% 
@@ -313,13 +464,17 @@ df_rec = recipe(activity ~ . , data = train_data) %>%
                   transform = function(x) x + 1,
                   levels = c('femme', 'homme')) %>% 
   step_rm(device) %>% 
-  step_dummy(all_nominal_predictors()) %>% 
   step_normalize(all_numeric()) %>% 
+  step_dummy(all_nominal_predictors()) %>% 
   step_zv(all_numeric()) %>% 
   step_corr(all_numeric_predictors(), threshold = 0.7) 
 ```
 
 ## Exemple de classification
+
+Regardons à quoi ressemble nos données après transformation 
+
+<br>
 
 ```{r}
 encoded = df_rec %>%
@@ -338,16 +493,22 @@ knitr::kable(encoded %>% head(6))
 
 ## Exemple de classification
 
+On utilise modèle Random forest pour notre exemple
+
+<br>
+
 ```{r}
 rf_spec <- 
   rand_forest(trees = 200) %>% 
-  set_engine("ranger", importance = "impurity") %>% 
+  set_engine("ranger") %>% 
   set_mode("classification")
 ```
 
 . . .
 
 <br>
+
+Création du workflow
 
 ```{r}
 activity_wflow <- 
@@ -359,6 +520,8 @@ activity_wflow <-
 . . .
 
 <br>
+
+Entraînement du modèle
 
 ```{r}
 activty_fit <- 
@@ -404,13 +567,7 @@ knitr::kable(table %>% head(6))
 
 ### Performances
 
-```{r}
-activity_pred %>% 
-  select(-.pred_class) %>% 
-  roc_auc(truth = as.factor(activity), contains(".pred_")) 
-```
-
-. . .
+Le package `yardstick`(Dans `Tidymodels`) nous permet d'obtenir l'accuracy : 
 
 <br>
 
@@ -423,10 +580,13 @@ activity_pred %>%
 
 ### Performances
 
+
 ```{r}
 #| fig-align: "center"
 activity_pred %>% 
-  conf_mat(activity, .pred_class) %>% 
+  select(activity, .pred_class) %>% 
+  mutate(activ = as.factor(activity)) %>% 
+  conf_mat(activ, .pred_class) %>% 
   autoplot(type = "heatmap")
 ```
 
@@ -444,14 +604,13 @@ activity_pred %>%
 
 ## Exemple Classification
 
-### Tuning parameter
+Afin de choisir certains paramètres, on peut également tuner notre modèle
 
 ```{r}
 tune_spec <- rand_forest(
   mtry = tune(),
   trees = 200,
-  min_n = tune()
-) %>%
+  min_n = tune()) %>%
   set_mode("classification") %>%
   set_engine("ranger")
 ```
@@ -477,29 +636,22 @@ doParallel::registerDoParallel()
 
 ```{r}
 set.seed(100)
-cv_folds <-
-  vfold_cv(train_data, 
-            v = 3, 
-           strata = activity) 
+cv_folds <- vfold_cv(train_data, 
+                     v = 3, 
+                     strata = activity) 
 ```
 
-## Exemple Classification
-
-### Tuning parameter
+. . .
 
 ```{r}
 set.seed(345)
 tune_res <- tune_grid(
   tune_wf,
   resamples = cv_folds,
-  grid = 20
-)
-
+  grid = 20)
 ```
 
 ## Exemple Classification
-
-### Tuning parameter
 
 ```{r}
 #| fig-align: "center"
@@ -519,14 +671,15 @@ tune_res %>%
 
 ## Exemple Classification
 
-### Tuning parameter
+On ajuste notre grille de paramètres :
+
+<br>
 
 ```{r}
 rf_grid <- grid_regular(
   min_n(range = c(1, 8)),
-  mtry(range = c(9, 20)),
-  levels = 2 # nombre de niveaux par paramètre
-)
+  mtry(range = c(3, 11)),
+  levels = 4) # nombre de niveaux par paramètre
 ```
 
 . . .
@@ -538,13 +691,10 @@ set.seed(456)
 regular_res <- tune_grid(
   tune_wf,
   resamples = cv_folds,
-  grid = rf_grid
-)
+  grid = rf_grid)
 ```
 
 ## Exemple Classification
-
-### Tuning parameter
 
 ```{r}
 #| fig-align: "center"
@@ -564,20 +714,23 @@ regular_res %>%
 
 ## Exemple Classification
 
-### Tuning parameter
+Sélecttion du meilleur modèle
+
+<br>
 
 ```{r}
 best_acc <- select_best(regular_res, "accuracy")
 
 final_rf <- finalize_model(
   tune_spec,
-  best_acc
-)
+  best_acc)
 ```
 
-## Exemple Classification
+. . .
 
-### Finalisation du workflow
+<br>
+
+Finalisation du workflow
 
 ```{r}
 final_wf <- workflow() %>%
@@ -589,6 +742,8 @@ final_wf <- workflow() %>%
 
 <br>
 
+Entraînement du modèle finale
+
 ```{r}
 final_res <- final_wf %>%
   last_fit(data_split) # train sur train et evalue sur test
@@ -596,7 +751,11 @@ final_res <- final_wf %>%
 
 ## Exemple Classification
 
-### Performances
+<br>
+
+Résultat final sur notre jeu de données : 
+
+<br>
 
 ```{r}
 final_res %>% 
@@ -605,7 +764,6 @@ final_res %>%
 
 ## Exemple Classification
 
-### Performances
 
 ```{r}
 #| fig-align: "center"
@@ -640,21 +798,14 @@ final_activity_model = final_res %>%
 saveRDS(final_activity_model, here::here("data", "activity_wf_model.rds"))
 ```
 
-
 ## Exemple de série temporelle
 
 Pour les séries temporelles nous avons besoin de quelques library supplémentaires.
 
-```{r}
-library(modeltime)
-library(timetk)
-library(lubridate)
-library(ggblanket)
-```
+Concernant les données, nous avons web scrap les données historiques de la ville de Paris depuis le site [historique meteo](https://www.historique-meteo.net). =
 
-:::: {.columns}
+Il s'agit des températures moyennes par jour (en degrès celsius) du 1er janvier 2010 au 31 juillet 2022.
 
-::: {.column width="45%"}
 
 ```{r}
 #| echo: false
@@ -672,19 +823,23 @@ ts_data <- ts_data %>%
 
 ```
 
+::: columns
+::: {.column width="45%"}
+```{r}
+library(modeltime)
+library(timetk)
+library(lubridate)
+library(ggblanket)
+```
 :::
 
-
 ::: {.column width="45%"}
-
 ```{r}
 #| echo: false
 knitr::kable(ts_data %>% tail(6))
 ```
-
 :::
-
-::::
+:::
 
 ## Exemple de série temporelle
 
@@ -700,20 +855,21 @@ split = time_series_split(
 
 . . .
 
+<br>
+
 ```{r}
 #| echo: false
-#| #| #| fig-align: "center"
+#| fig-height: 4
+#| fig-align: "center"
 split %>% 
   tk_time_series_cv_plan() %>% 
   filter(ds > "2022-03-01") %>% 
   plot_time_series_cv_plan(ds, y)
 ```
 
-
 ## Exemple de série temporelle
 
-Comme pour la classification nous pouvons créer une récipient pour créer des nouvelles features.
-On pourrait également imaginer d'ajouter des régresseurs à notre jeu de données initial afin d'améliorer notre modèle.
+Comme pour la classification nous pouvons créer une récipient pour créer des nouvelles features. On pourrait également imaginer d'ajouter des régresseurs à notre jeu de données initial afin d'améliorer notre modèle.
 
 ```{r}
 recipe_spec <- recipe(y ~ ds, training(split)) %>%
@@ -728,10 +884,13 @@ table = recipe_spec %>% prep() %>% juice()
 
 . . .
 
+::: {style="font-size: 0.45em"}
 ```{r}
 #| echo: false
 knitr::kable(table %>% head(6))
 ```
+::: 
+
 
 ## Exemple de série temporelle
 
@@ -750,10 +909,10 @@ ts_k_folds = rolling_origin(ts_data,
 
 . . .
 
-
 ```{r}
 #| echo: false
-#| #| fig-align: "center"
+#| fig-height: 4
+#| fig-align: "center"
 ts_k_folds  %>%  
   mutate(train = map(splits, analysis),
          test = map(splits, assessment)) %>%
@@ -773,7 +932,6 @@ ts_k_folds  %>%
 ## Exemple de série temporelle
 
 Création d'une fonction afin d'itérer un ou plusieurs modèles sur nos différents splits.
-
 
 ```{r}
 #| code-line-numbers: "3-4|5|7-10|12-15|17-18|20-23|25-28|30-31|33-42"
@@ -822,6 +980,7 @@ tune_prophet = function(splits){
   
 }
 ```
+
 ## Exemple de série temporelle
 
 On test nos modèles sur différentes périodes :
@@ -832,12 +991,14 @@ ts_tune = ts_k_folds %>% mutate(result = map(splits, tune_prophet))
 
 . . .
 
+<br>
+
 On peut donc comparer différents modèles :
 
-:::: {.columns}
+<br>
 
-::: {.column width="45%"}
-
+::: columns
+::: {.column width="50%"}
 ```{r}
 #| echo: false
 ts_tune %>% 
@@ -860,13 +1021,9 @@ ts_tune %>%
            title = 'MAE (Prophet vs Prophet XGB)') +
   geom_abline() 
 ```
-
-
 :::
 
-
-::: {.column width="45%"}
-
+::: {.column width="50%"}
 ```{r}
 #| echo: false
 ts_tune %>% 
@@ -887,14 +1044,12 @@ ts_tune %>%
           facet = type,
           col = type)
 ```
-
 :::
-
-::::
+:::
 
 ## Exemple de série temporelle
 
-Une fois qu'on a le modèle que l'on souhaite
+Une fois que nous avons trouvé un modèle performant, on l'entraine.
 
 ```{r}
 model_arima = arima_reg() %>% 
@@ -929,45 +1084,100 @@ workflow_fit_prophet_boost <- workflow() %>%
     fit(training(split))
 ```
 
-
 ## Exemple de série temporelle
 
+`modeltime`nous permet de créer une *table* avec plusieurs modèles afin de faciliter les comparaisons de performances.
 
-# model
+```{r}
 model_table = modeltime_table(
   model_arima,
   model_prophet,
   workflow_fit_prophet_boost
 )
+```
 
-# calibrate
+. . .
+
+<br>
+
+On calibre la table (= prédictions usr la période de test et calcul des résidus)
+
+```{r}
 calib_table = model_table %>% 
   modeltime_calibrate(testing(split))
+```
 
+. . .
+
+<br>
+
+On compare les performances : 
+
+```{r}
 calib_table %>%  modeltime_accuracy()
+```
 
-# test
+## Exemple de série temporelle
+
+
+```{r}
+#| echo: false
+#| fig-height: 5
 calib_table %>% 
   modeltime_forecast(
     new_data = testing(split),
     actual_data = ts_data,
-    keep_data = T
-  ) %>% 
+    keep_data = T) %>% 
+  filter(.index > "2022-07-10") %>% 
   plot_modeltime_forecast()
+```
 
-#
+## Exemple de série temporelle
+
+Pour prédire sur des données futures, on entraine le modèle une dernière fois sur l'ensemble des données : 
+
+```{r}
 future_forecast = calib_table %>% 
   modeltime_refit(ts_data) 
+```
 
-future_pred = future_forecast%>% 
+. . .
+
+<br>
+
+On applique notre modèle à +15 jours : 
+
+```{r}
+future_pred = future_forecast %>% 
   modeltime_forecast(
     h = '15 days',
-    actual_data = ts_data,
-    keep_data = T
+    actual_data = ts_data
   )
+```
 
-future_pred %>% plot_modeltime_forecast()
+## Exemple de série temporelle
 
+```{r}
+#| echo: false
+#| fig-height: 5
+future_pred %>% 
+  filter(.index > "2022-06-10") %>%
+  plot_modeltime_forecast()
+```
 
+## Merci !
 
+Lien de la présentation : 
+`r fontawesome::fa("github", "black")`   <https://github.com/clementrx/site_r>
 
+<br>
+
+Liens utiles : 
+
+Pour étudier Tidymodel : [Tidy Modeling with R](https://www.tmwr.org/)
+
+Pour voir des exemples d'utilisation en vidéos : 
+
+[Julia Silge](https://www.youtube.com/c/JuliaSilge)
+
+[Andrew Couch](https://www.youtube.com/c/AndrewCouch)
