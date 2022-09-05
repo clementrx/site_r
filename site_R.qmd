@@ -13,9 +13,9 @@ format:
     center-title-slide: false
     highlight-style: a11y
     code-link: true
-    code-overflow: wrap
     height: 1080
     width: 1600
+    # code-overflow: wrap
 execute: 
   eval: true
   echo: true
@@ -77,11 +77,13 @@ execute:
 library(tidymodels) 
 ```
 
+<br>
 
 ```{r}
 ## ── Attaching packages ─────────────────────────────────────────────────────────────────────── tidymodels 1.0.0 ──
 ```
 
+<br>
 
 ```{r}
 ## ✔ broom        1.0.1      ✔ recipes      1.0.1 
@@ -94,6 +96,7 @@ library(tidymodels)
 ## ✔ purrr        0.3.4      ✔ yardstick    1.0.0 
 ```
 
+<br>
 
 ```{r}
 ## ── Conflicts ────────────────────────────────────────────────────────────────────────── tidymodels_conflicts() ──
@@ -311,13 +314,17 @@ rand_forest() %>%
 
 <br>
 
-Replication Data for: Using machine learning methods to predict physical activity types with Apple Watch and Fitbit data using indirect calorimetry as the criterion. Fuller Daniel, 2020. [(Lien)](https://doi.org/10.7910/DVN/ZS2Z2J)
+Replication Data for: Using machine learning methods to predict physical activity types with Apple Watch and Fitbit data using indirect calorimetry as the criterion. Fuller Daniel, 2020. 
 
 <br>
 <br>
 <br>
 
 L'objectif est de prédire depuis les données d'une montre connectée, si la personne la personne est `allongée`, `assise`, ou `pratique une activté physique` selon plusieurs intensité.
+
+::: footer
+Lien de la publication: [ici](https://doi.org/10.7910/DVN/ZS2Z2J)
+:::
 
 ## Exemple de classification
 
@@ -336,7 +343,7 @@ Nous avons 6 activités à détecter :
 
 <hr>
 
-La publication de Daniel Fuller montre que le **Rotation forest models** est le modèle qui donne la meilleure accuracy avec **82,6%**.
+La publication de Daniel Fuller montre que le **Rotation forest models** est celui qui donne la meilleure accuracy avec **82,6%**.
 
 
 ## Exemple de classification
@@ -381,7 +388,10 @@ data_split <- initial_split(df,
 
 ```
 
+
 . . .
+
+<br>
 
 ```{r}
 data_split
@@ -392,11 +402,15 @@ data_split
 train_data <- training(data_split) 
 test_data <- testing(data_split)
 ```
+
 . . .
+
+<br>
 
 ```{r}
 nrow(train_data)
 ```
+
 . . .
 
 ```{r}
@@ -405,7 +419,7 @@ nrow(test_data)
 
 ## Exemple de classification
 
-Ensuite, nous allons défnir notre modèle :
+Ensuite, nous allons définir notre modèle :
 
 . . .
 
@@ -415,19 +429,106 @@ df_rec = recipe(activity ~ . , data = train_data)
 
 . . .
 
+<br>
+
 ```{r}
 df_rec
 ```
 
 ## Exemple de classification
 
-Ensuite, nous allons défnir notre modèle :
+Ensuite, nous allons définir notre modèle :
 
 ```{r}
 summary(df_rec)
 ```
 
-## Exemple de classification
+## Exemple de classification {auto-animate="true"}
+
+Le `recipient` va nous permettre de faire tout le pre-processing avant la modélisation : 
+
+<br>
+
+```{r}
+df_rec = recipe(activity ~ . , data = train_data)
+```
+
+## Exemple de classification {auto-animate="true"}
+
+Le `recipient` va nous permettre de faire tout le pre-processing avant la modélisation : 
+
+<br>
+
+```{r}
+df_rec = recipe(activity ~ . , data = train_data) %>% 
+  step_num2factor(gender,
+                  transform = function(x) x + 1,
+                  levels = c('femme', 'homme')) 
+```
+
+## Exemple de classification {auto-animate="true"}
+
+Le `recipient` va nous permettre de faire tout le pre-processing avant la modélisation : 
+
+<br>
+
+```{r}
+df_rec = recipe(activity ~ . , data = train_data) %>% 
+  step_num2factor(gender,
+                  transform = function(x) x + 1,
+                  levels = c('femme', 'homme')) %>% 
+  step_rm(device)
+```
+
+## Exemple de classification {auto-animate="true"}
+
+Le `recipient` va nous permettre de faire tout le pre-processing avant la modélisation : 
+
+<br>
+
+```{r}
+df_rec = recipe(activity ~ . , data = train_data) %>% 
+  step_num2factor(gender,
+                  transform = function(x) x + 1,
+                  levels = c('femme', 'homme')) %>% 
+  step_rm(device) %>% 
+  step_dummy(all_nominal_predictors()) 
+```
+
+## Exemple de classification {auto-animate="true"}
+
+Le `recipient` va nous permettre de faire tout le pre-processing avant la modélisation : 
+
+<br>
+
+```{r}
+df_rec = recipe(activity ~ . , data = train_data) %>% 
+  step_num2factor(gender,
+                  transform = function(x) x + 1,
+                  levels = c('femme', 'homme')) %>% 
+  step_rm(device) %>% 
+  step_dummy(all_nominal_predictors()) %>% 
+  step_normalize(all_numeric()) 
+```
+
+## Exemple de classification {auto-animate="true"}
+
+Le `recipient` va nous permettre de faire tout le pre-processing avant la modélisation : 
+
+<br>
+
+```{r}
+df_rec = recipe(activity ~ . , data = train_data) %>% 
+  step_num2factor(gender,
+                  transform = function(x) x + 1,
+                  levels = c('femme', 'homme')) %>% 
+  step_rm(device) %>% 
+  step_dummy(all_nominal_predictors()) %>% 
+  step_normalize(all_numeric()) %>% 
+  step_zv(all_numeric()) 
+```
+
+## Exemple de classification {auto-animate="true"}
 
 Le `recipient` va nous permettre de faire tout le pre-processing avant la modélisation : 
 
@@ -444,6 +545,7 @@ df_rec = recipe(activity ~ . , data = train_data) %>%
   step_zv(all_numeric()) %>% 
   step_corr(all_numeric_predictors(), threshold = 0.7) 
 ```
+
 
 ## Exemple de classification
 
@@ -465,6 +567,10 @@ df_rec = recipe(activity ~ . , data = train_data) %>%
 ```
 
 ## Exemple de classification
+
+Le `recipient` va nous permettre de faire tout le pre-processing avant la modélisation : 
+
+<br>
 
 ```{r}
 #| code-line-numbers: "2-4|5|6|7|8|9"
@@ -519,8 +625,7 @@ rf_spec <- rand_forest(trees = 200) %>%
 Création du workflow
 
 ```{r}
-activity_wflow <- 
-  workflow() %>% 
+activity_wflow <- workflow() %>% 
   add_recipe(df_rec) %>% 
   add_model(rf_spec)
 ```
@@ -532,8 +637,7 @@ activity_wflow <-
 Entraînement du modèle
 
 ```{r}
-activty_fit <- 
-  activity_wflow %>% 
+activty_fit <- activity_wflow %>% 
   fit(data = train_data)
 ```
 
@@ -541,9 +645,13 @@ activty_fit <-
 
 <br>
 
+On prédit les activités avec `augment`, ce qui va nous permettre de récupérer également les probabilités que le modèle associe à chaque classe.
+
+<br>
+
 ```{r}
-activity_pred <- 
-  augment(activty_fit, test_data)
+activity_pred <- augment(activty_fit,
+                         test_data)
 ```
 
 . . .
@@ -558,6 +666,8 @@ table = activity_pred %>%
 
 . . .
 
+<br>
+
 ::: {style="font-size: 0.5em"}
 ```{r}
 #| echo: false
@@ -569,7 +679,7 @@ knitr::kable(table %>% head(6))
 
 ### Performances
 
-Le package `yardstick` va servir à calculer les performances des modèles : 
+Le package `yardstick` va servir à calculer les performances : 
 
 <br>
 
@@ -608,6 +718,8 @@ activity_pred %>%
 
 Afin de choisir certains paramètres, on peut également tuner notre modèle
 
+<br>
+
 ```{r}
 tune_spec <- rand_forest(mtry = tune(),
                          trees = 200,
@@ -644,6 +756,8 @@ cv_folds <- vfold_cv(train_data,
 ```
 
 . . .
+
+<br>
 
 ```{r}
 set.seed(345)
@@ -846,6 +960,8 @@ knitr::kable(ts_data %>% tail(6))
 
 La library `timetk` va nous servir à créer notre split train/test
 
+
+
 ```{r}
 split = time_series_split(
   ts_data,
@@ -853,14 +969,13 @@ split = time_series_split(
   cumulative = TRUE)
 ```
 
-. . .
-
-<br>
+## Exemple de série temporelle
 
 ```{r}
 #| echo: false
-#| fig-height: 4
-#| fig-align: "center"
+#| output-location: slide
+#| fig-width: 18
+#| fig-height: 9
 split %>% 
   tk_time_series_cv_plan() %>% 
   filter(ds > "2022-03-01") %>% 
@@ -873,7 +988,7 @@ Comme pour la classification nous pouvons créer une récipient pour créer des 
 
 On pourrait également imaginer d'ajouter des régresseurs à notre jeu de données initial afin d'améliorer notre modèle.
 
-
+<br>
 
 ```{r}
 recipe_spec <- recipe(y ~ ds, training(split)) %>%
@@ -888,7 +1003,7 @@ table = recipe_spec %>% prep() %>% juice()
 
 . . .
 
-
+<br>
 
 ::: {style="font-size: 0.45em"}
 ```{r}
@@ -904,6 +1019,10 @@ Cependant pour les séries temporelles, une bonne pratique est de tester notre m
 
 . . .
 
+<br>
+<br>
+<br>
+
 On va donc créer plusieurs splits de train/test
 
 ```{r}
@@ -913,12 +1032,17 @@ ts_k_folds = rolling_origin(ts_data,
                             skip = 120)
 ```
 
-. . .
+## Exemple de série temporelle
+
+Cependant pour les séries temporelles, une bonne pratique est de tester notre modèle sur plusieurs périodes différentes.
+
+On va donc créer plusieurs splits de train/test
 
 ```{r}
 #| echo: false
-#| fig-height: 6
-#| fig-align: "center"
+#| output-location: slide
+#| fig-width: 20
+#| fig-height: 8
 ts_k_folds  %>%  
   mutate(train = map(splits, analysis),
          test = map(splits, assessment)) %>%
@@ -998,18 +1122,15 @@ On test nos modèles sur différentes périodes :
 ts_tune = ts_k_folds %>% mutate(result = map(splits, tune_prophet))
 ```
 
-. . .
 
-<br>
+## Exemple de série temporelle
 
 On peut donc comparer différents modèles :
 
-<br>
 
-::: columns
-::: {.column width="50%"}
 ```{r}
 #| echo: false
+#| output-location: slide
 ts_tune %>% 
   select(id, result) %>% 
   unnest(result) %>% 
@@ -1030,11 +1151,13 @@ ts_tune %>%
            title = 'MAE (Prophet vs Prophet XGB)') +
   geom_abline() 
 ```
-:::
 
-::: {.column width="50%"}
+
+## Exemple de série temporelle
+
 ```{r}
 #| echo: false
+#| output-location: slide
 ts_tune %>% 
   select(id, result) %>% 
   unnest(result) %>% 
@@ -1053,8 +1176,6 @@ ts_tune %>%
           facet = type,
           col = type)
 ```
-:::
-:::
 
 ## Exemple de série temporelle
 
@@ -1109,7 +1230,7 @@ model_table = modeltime_table(
 
 <br>
 
-On calibre la table (= prédictions usr la période de test et calcul des résidus)
+On calibre la table (= prédictions sur la période de test et calcul des résidus)
 
 ```{r}
 calib_table = model_table %>% 
@@ -1131,7 +1252,9 @@ calib_table %>%  modeltime_accuracy()
 
 ```{r}
 #| echo: false
-#| fig-height: 5
+#| output-location: slide
+#| fig-width: 18
+#| fig-height: 9
 calib_table %>% 
   modeltime_forecast(
     new_data = testing(split),
@@ -1168,7 +1291,9 @@ future_pred = future_forecast %>%
 
 ```{r}
 #| echo: false
-#| fig-height: 5
+#| output-location: slide
+#| fig-width: 18
+#| fig-height: 9
 future_pred %>% 
   filter(.index > "2022-06-10") %>%
   plot_modeltime_forecast()
@@ -1181,12 +1306,19 @@ Lien de la présentation :
 
 <br>
 
-Liens utiles : 
+**Liens utiles :** 
 
 Pour étudier Tidymodel : [Tidy Modeling with R](https://www.tmwr.org/)
 
+<br>
+<br>
+
 Pour voir des exemples d'utilisation en vidéos : 
 
-[Julia Silge](https://www.youtube.com/c/JuliaSilge)
+`r fontawesome::fa("youtube", "black")`   [Julia Silge](https://www.youtube.com/c/JuliaSilge)
 
-[Andrew Couch](https://www.youtube.com/c/AndrewCouch)
+`r fontawesome::fa("youtube", "black")`   [Andrew Couch](https://www.youtube.com/c/AndrewCouch)
+
+
+
+
