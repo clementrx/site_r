@@ -22,6 +22,7 @@ execute:
   freeze: auto
 ---
 
+
 <h1>Présentation de `TidyModels`</h1>
 
 <h2>R addict</h2>
@@ -73,15 +74,14 @@ execute:
 
 > **tidymodels** est une collection de packages de modélisation qui est semblable à tidyverse. Créé par l'auteur de **caret** : Max Kuhn. La version 1.0.0 est disponible depuis le 13 juillet 2022.
 
+
 ```{r}
 library(tidymodels) 
 ```
 
-
 ```{r}
 ## ── Attaching packages ─────────────────────────────────────────────────────────────────────── tidymodels 1.0.0 ──
 ```
-
 
 ```{r}
 ## ✔ broom        1.0.1      ✔ recipes      1.0.1 
@@ -94,7 +94,6 @@ library(tidymodels)
 ## ✔ purrr        0.3.4      ✔ yardstick    1.0.0 
 ```
 
-
 ```{r}
 ## ── Conflicts ────────────────────────────────────────────────────────────────────────── tidymodels_conflicts() ──
 ## ✖ purrr::discard() masks scales::discard()
@@ -102,6 +101,7 @@ library(tidymodels)
 ## ✖ dplyr::lag()     masks stats::lag()
 ## ✖ recipes::step()  masks stats::step()
 ```
+
 
 ## Tidymodels
 
@@ -207,10 +207,12 @@ La première étape consiste donc à choisir un (ou plusieurs) modèle(s).
 
 Régression linéaire
 
+
 ```{r}
 #| eval: false
 linear_reg(penalty = NULL, mixture = NULL)
 ```
+
 
 . . .
 
@@ -218,10 +220,12 @@ linear_reg(penalty = NULL, mixture = NULL)
 
 Decision tree
 
+
 ```{r}
 #| eval: false
 decision_tree(cost_complexity = NULL, tree_depth = NULL, min_n = NULL)
 ```
+
 
 . . .
 
@@ -229,10 +233,12 @@ decision_tree(cost_complexity = NULL, tree_depth = NULL, min_n = NULL)
 
 Random Forest
 
+
 ```{r}
 #| eval: false
 rand_forest(mtry = NULL, trees = NULL, min_n = NULL)
 ```
+
 
 . . .
 
@@ -240,10 +246,12 @@ rand_forest(mtry = NULL, trees = NULL, min_n = NULL)
 
 Single layer neural network
 
+
 ```{r}
 #| eval: false
 mlp(hidden_units = NULL, penalty = NULL, dropout = NULL, epochs = NULL, activation = NULL, learn_rate = NULL)
 ```
+
 
 
 ## 2. Sélectionner le mode
@@ -255,21 +263,25 @@ En effet, pour clarifier le code et également ce que l'on souhaite prédire, on
 <br/>
 <br/>
 
+
 ```{r }
 #| eval: false
 linear_reg() %>% 
   set_mode(mode = "regression")
 ```
 
+
 . . .
 
 <br/>
+
 
 ```{r}
 #| eval: false
 logistic_reg() %>% 
   set_mode(mode = "classification")
 ```
+
 
 ## 3. Paramètrer le engine
 
@@ -279,15 +291,18 @@ Enfin, on sélectionne un `engine` pour indiquer la méthode de calcul que l'on 
 
 . . .
 
+
 ```{r}
 #| eval: false
 linear_reg() %>% 
   set_engine("spark" )
 ```
 
+
 . . .
 
 <br>
+
 
 ```{r}
 #| eval: false
@@ -295,15 +310,18 @@ rand_forest() %>%
   set_engine("randomForest")
 ```
 
+
 . . .
 
 <br>
+
 
 ```{r}
 #| eval: false
 rand_forest() %>% 
   set_engine("ranger")
 ```
+
 
 ## Exemple de classification
 
@@ -343,6 +361,7 @@ La publication de Daniel Fuller montre que le **Rotation forest models** est le 
 
 <br>
 
+
 ```{r}
 #| echo: false
 library(tidyverse)
@@ -353,6 +372,7 @@ df = data %>% filter(device == 'apple watch')
 opts <- options(knitr.kable.NA = "")
 ```
 
+
 ::: {style="text-align: center"}
 `Données`
 :::
@@ -360,10 +380,12 @@ opts <- options(knitr.kable.NA = "")
 <br>
 
 ::: {style="font-size: 0.75em"}
+
 ```{r}
 #| echo: false
 knitr::kable(df %>% head(6))
 ```
+
 :::
 
 
@@ -374,6 +396,7 @@ Le jeu de données étant propre, nous pouvons directement split nos données en
 . . .
 
 
+
 ```{r}
 set.seed(123)
 data_split <- initial_split(df, 
@@ -381,57 +404,70 @@ data_split <- initial_split(df,
 
 ```
 
+
 . . .
+
 
 ```{r}
 data_split
 ```
 
-
 ```{r}
 train_data <- training(data_split) 
 test_data <- testing(data_split)
 ```
+
 . . .
+
 
 ```{r}
 nrow(train_data)
 ```
+
 . . .
+
 
 ```{r}
 nrow(test_data)
 ```
 
+
 ## Exemple de classification
 
 Ensuite, nous allons défnir notre modèle :
 
 . . .
+
 
 ```{r}
 df_rec = recipe(activity ~ . , data = train_data) 
 ```
 
+
 . . .
+
 
 ```{r}
 df_rec
 ```
 
+
 ## Exemple de classification
 
 Ensuite, nous allons défnir notre modèle :
 
+
 ```{r}
 summary(df_rec)
 ```
+
 
 ## Exemple de classification
 
 Le `recipient` va nous permettre de faire tout le pre-processing avant la modélisation : 
 
 <br>
+
 
 ```{r}
 df_rec = recipe(activity ~ . , data = train_data) %>% 
@@ -445,11 +481,13 @@ df_rec = recipe(activity ~ . , data = train_data) %>%
   step_corr(all_numeric_predictors(), threshold = 0.7) 
 ```
 
+
 ## Exemple de classification
 
 Le `recipient` va nous permettre de faire tout le pre-processing avant la modélisation : 
 
 <br>
+
 
 ```{r}
 #| code-line-numbers: "2-9"
@@ -464,7 +502,9 @@ df_rec = recipe(activity ~ . , data = train_data) %>%
   step_corr(all_numeric_predictors(), threshold = 0.7) 
 ```
 
+
 ## Exemple de classification
+
 
 ```{r}
 #| code-line-numbers: "2-4|5|6|7|8|9"
@@ -479,11 +519,13 @@ df_rec = recipe(activity ~ . , data = train_data) %>%
   step_corr(all_numeric_predictors(), threshold = 0.7) 
 ```
 
+
 ## Exemple de classification
 
 Regardons à quoi ressemble nos données après transformation 
 
 <br>
+
 
 ```{r}
 encoded = df_rec %>%
@@ -491,14 +533,17 @@ encoded = df_rec %>%
   juice()
 ```
 
+
 . . .
 
 <br>
+
 
 ```{r}
 #| echo: false
 knitr::kable(encoded %>% head(6))
 ```
+
 
 ## Exemple de classification
 
@@ -506,17 +551,20 @@ On utilise un modèle Random forest pour notre exemple
 
 <br>
 
+
 ```{r}
 rf_spec <- rand_forest(trees = 200) %>% 
   set_engine("ranger") %>% 
   set_mode("classification")
 ```
 
+
 . . .
 
 <br>
 
 Création du workflow
+
 
 ```{r}
 activity_wflow <- 
@@ -525,11 +573,13 @@ activity_wflow <-
   add_model(rf_spec)
 ```
 
+
 . . .
 
 <br>
 
 Entraînement du modèle
+
 
 ```{r}
 activty_fit <- 
@@ -537,18 +587,22 @@ activty_fit <-
   fit(data = train_data)
 ```
 
+
 ## Exemple Classification
 
 <br>
+
 
 ```{r}
 activity_pred <- 
   augment(activty_fit, test_data)
 ```
 
+
 . . .
 
 <br>
+
 
 ```{r}
 table = activity_pred %>%
@@ -556,13 +610,16 @@ table = activity_pred %>%
          contains(".pred_"))
 ```
 
+
 . . .
 
 ::: {style="font-size: 0.5em"}
+
 ```{r}
 #| echo: false
 knitr::kable(table %>% head(6))
 ```
+
 :::
 
 ## Exemple Classification
@@ -573,14 +630,17 @@ Le package `yardstick` va servir à calculer les performances des modèles :
 
 <br>
 
+
 ```{r}
 activity_pred %>% 
   accuracy(truth = as.factor(activity), .pred_class)
 ```
 
+
 ## Exemple Classification
 
 ### Performances
+
 
 
 ```{r}
@@ -592,9 +652,11 @@ activity_pred %>%
   autoplot(type = "heatmap")
 ```
 
+
 ## Exemple Classification
 
 ### Performances
+
 
 ```{r}
 #| fig-align: "center"
@@ -604,9 +666,11 @@ activity_pred %>%
   autoplot()
 ```
 
+
 ## Exemple Classification
 
 Afin de choisir certains paramètres, on peut également tuner notre modèle
+
 
 ```{r}
 tune_spec <- rand_forest(mtry = tune(),
@@ -616,9 +680,11 @@ tune_spec <- rand_forest(mtry = tune(),
   set_engine("ranger")
 ```
 
+
 . . .
 
 <br>
+
 
 ```{r}
 tune_wf <- workflow() %>%
@@ -626,15 +692,16 @@ tune_wf <- workflow() %>%
   add_model(tune_spec)
 ```
 
+
 . . .
 
 <br>
+
 
 ```{r}
 #| echo: false
 doParallel::registerDoParallel()
 ```
-
 
 ```{r}
 set.seed(100)
@@ -643,7 +710,9 @@ cv_folds <- vfold_cv(train_data,
                      strata = activity) 
 ```
 
+
 . . .
+
 
 ```{r}
 set.seed(345)
@@ -653,7 +722,9 @@ tune_res <- tune_grid(
   grid = 20)
 ```
 
+
 ## Exemple Classification
+
 
 ```{r}
 #| fig-align: "center"
@@ -670,11 +741,13 @@ tune_res %>%
   labs(x = NULL, y = "ACC")
 ```
 
+
 ## Exemple Classification
 
 On ajuste notre grille de paramètres :
 
 <br>
+
 
 ```{r}
 rf_grid <- grid_regular(min_n(range = c(1, 8)),
@@ -682,9 +755,11 @@ rf_grid <- grid_regular(min_n(range = c(1, 8)),
                         levels = 4) # nombre de niveaux par paramètre
 ```
 
+
 . . .
 
 <br>
+
 
 ```{r}
 set.seed(456)
@@ -693,7 +768,9 @@ regular_res <- tune_grid(tune_wf,
                          grid = rf_grid)
 ```
 
+
 ## Exemple Classification
+
 
 ```{r}
 #| fig-align: "center"
@@ -710,11 +787,13 @@ regular_res %>%
   labs(x = NULL, y = "ACC")
 ```
 
+
 ## Exemple Classification
 
 Sélecttion du meilleur modèle
 
 <br>
+
 
 ```{r}
 best_acc <- select_best(regular_res, "accuracy")
@@ -723,11 +802,13 @@ final_rf <- finalize_model(tune_spec,
                            best_acc)
 ```
 
+
 . . .
 
 <br>
 
 Finalisation du workflow
+
 
 ```{r}
 final_wf <- workflow() %>%
@@ -735,16 +816,19 @@ final_wf <- workflow() %>%
   add_model(final_rf)
 ```
 
+
 . . .
 
 <br>
 
 Entraînement du modèle finale
 
+
 ```{r}
 final_res <- final_wf %>%
   last_fit(data_split) # train sur train et evalue sur test
 ```
+
 
 ## Exemple Classification
 
@@ -754,12 +838,15 @@ Résultat final sur notre jeu de données :
 
 <br>
 
+
 ```{r}
 final_res %>% 
   collect_metrics()
 ```
 
+
 ## Exemple Classification
+
 
 
 ```{r}
@@ -770,9 +857,11 @@ final_res %>%
   autoplot(type = "heatmap")
 ```
 
+
 ## Exemple Classification
 
 ### Performances
+
 
 ```{r}
 #| fig-align: "center"
@@ -783,9 +872,11 @@ final_res %>%
   autoplot()
 ```
 
+
 ## Exemple Classification
 
 ### Enregistrement du modèle
+
 
 ```{r}
 
@@ -794,6 +885,7 @@ final_activity_model = final_res %>%
 
 saveRDS(final_activity_model, here::here("data", "activity_wf_model.rds"))
 ```
+
 
 ## Exemple de série temporelle
 
@@ -806,6 +898,7 @@ Concernant les données, nous avons web scrap les données historiques de la vil
 <br>
 
 Il s'agit des températures moyennes par jour (en degrès celsius) du 1er janvier 2010 au 31 juillet 2022.
+
 
 
 ```{r}
@@ -824,27 +917,33 @@ ts_data <- ts_data %>%
 
 ```
 
+
 ::: columns
 ::: {.column width="50%"}
+
 ```{r}
 library(modeltime)
 library(timetk)
 library(lubridate)
 library(ggblanket)
 ```
+
 :::
 
 ::: {.column width="50%"}
+
 ```{r}
 #| echo: false
 knitr::kable(ts_data %>% tail(6))
 ```
+
 :::
 :::
 
 ## Exemple de série temporelle
 
 La library `timetk` va nous servir à créer notre split train/test
+
 
 ```{r}
 split = time_series_split(
@@ -853,9 +952,11 @@ split = time_series_split(
   cumulative = TRUE)
 ```
 
+
 . . .
 
 <br>
+
 
 ```{r}
 #| echo: false
@@ -867,11 +968,13 @@ split %>%
   plot_time_series_cv_plan(ds, y)
 ```
 
+
 ## Exemple de série temporelle
 
 Comme pour la classification nous pouvons créer une récipient pour créer des nouvelles features. 
 
 On pourrait également imaginer d'ajouter des régresseurs à notre jeu de données initial afin d'améliorer notre modèle.
+
 
 
 
@@ -886,15 +989,18 @@ recipe_spec <- recipe(y ~ ds, training(split)) %>%
 table = recipe_spec %>% prep() %>% juice()
 ```
 
+
 . . .
 
 
 
 ::: {style="font-size: 0.45em"}
+
 ```{r}
 #| echo: false
 knitr::kable(table %>% head(6))
 ```
+
 ::: 
 
 
@@ -906,6 +1012,7 @@ Cependant pour les séries temporelles, une bonne pratique est de tester notre m
 
 On va donc créer plusieurs splits de train/test
 
+
 ```{r}
 ts_k_folds = rolling_origin(ts_data,
                             initial = 1600,
@@ -913,7 +1020,9 @@ ts_k_folds = rolling_origin(ts_data,
                             skip = 120)
 ```
 
+
 . . .
+
 
 ```{r}
 #| echo: false
@@ -935,9 +1044,11 @@ ts_k_folds  %>%
           facet_scales = 'free_x')
 ```
 
+
 ## Exemple de série temporelle
 
 Création d'une fonction afin d'itérer un ou plusieurs modèles sur nos différents splits.
+
 
 ```{r}
 #| code-line-numbers: "3-4|5|7-10|12-15|17-18|20-23|25-28|30-31|33-42"
@@ -987,6 +1098,7 @@ tune_prophet = function(splits){
 }
 ```
 
+
 ## Exemple de série temporelle
 
 
@@ -994,9 +1106,11 @@ On test nos modèles sur différentes périodes :
 
 
 
+
 ```{r}
 ts_tune = ts_k_folds %>% mutate(result = map(splits, tune_prophet))
 ```
+
 
 . . .
 
@@ -1008,6 +1122,7 @@ On peut donc comparer différents modèles :
 
 ::: columns
 ::: {.column width="50%"}
+
 ```{r}
 #| echo: false
 ts_tune %>% 
@@ -1030,9 +1145,11 @@ ts_tune %>%
            title = 'MAE (Prophet vs Prophet XGB)') +
   geom_abline() 
 ```
+
 :::
 
 ::: {.column width="50%"}
+
 ```{r}
 #| echo: false
 ts_tune %>% 
@@ -1053,6 +1170,7 @@ ts_tune %>%
           facet = type,
           col = type)
 ```
+
 :::
 :::
 
@@ -1060,15 +1178,18 @@ ts_tune %>%
 
 Une fois que nous avons trouvé un modèle performant, on l'entraine.
 
+
 ```{r}
 model_arima = arima_reg() %>% 
   set_engine("auto_arima") %>% 
   fit(y~ds, training(split))
 ```
 
+
 . . .
 
 <br>
+
 
 ```{r}
 model_prophet  = prophet_reg(
@@ -1078,9 +1199,11 @@ model_prophet  = prophet_reg(
   fit(y~ds, training(split))
 ```
 
+
 . . .
 
 <br>
+
 
 ```{r}
 model_prophet_xgb  = prophet_boost(prior_scale_changepoints = 0.01,
@@ -1093,9 +1216,11 @@ workflow_fit_prophet_boost <- workflow() %>%
     fit(training(split))
 ```
 
+
 ## Exemple de série temporelle
 
 `modeltime`nous permet de créer une *table* avec plusieurs modèles afin de faciliter les comparaisons de performances.
+
 
 ```{r}
 model_table = modeltime_table(
@@ -1105,16 +1230,19 @@ model_table = modeltime_table(
 )
 ```
 
+
 . . .
 
 <br>
 
 On calibre la table (= prédictions usr la période de test et calcul des résidus)
 
+
 ```{r}
 calib_table = model_table %>% 
   modeltime_calibrate(testing(split))
 ```
+
 
 . . .
 
@@ -1122,11 +1250,14 @@ calib_table = model_table %>%
 
 On compare les performances : 
 
+
 ```{r}
 calib_table %>%  modeltime_accuracy()
 ```
 
+
 ## Exemple de série temporelle
+
 
 
 ```{r}
@@ -1141,20 +1272,24 @@ calib_table %>%
   plot_modeltime_forecast()
 ```
 
+
 ## Exemple de série temporelle
 
 Pour prédire sur des données futures, on entraine le modèle une dernière fois sur l'ensemble des données : 
+
 
 ```{r}
 future_forecast = calib_table %>% 
   modeltime_refit(ts_data) 
 ```
 
+
 . . .
 
 <br>
 
 On applique notre modèle à +15 jours : 
+
 
 ```{r}
 future_pred = future_forecast %>% 
@@ -1164,7 +1299,9 @@ future_pred = future_forecast %>%
   )
 ```
 
+
 ## Exemple de série temporelle
+
 
 ```{r}
 #| echo: false
@@ -1173,6 +1310,7 @@ future_pred %>%
   filter(.index > "2022-06-10") %>%
   plot_modeltime_forecast()
 ```
+
 
 ## Merci !
 
@@ -1190,3 +1328,4 @@ Pour voir des exemples d'utilisation en vidéos :
 [Julia Silge](https://www.youtube.com/c/JuliaSilge)
 
 [Andrew Couch](https://www.youtube.com/c/AndrewCouch)
+
