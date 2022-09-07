@@ -256,7 +256,7 @@
     "href": "site_R.html#exemple-classification-8",
     "title": "",
     "section": "Exemple Classification",
-    "text": "Exemple Classification\nSélecttion du meilleur modèle\n\n\nbest_acc <- select_best(regular_res, \"accuracy\")\n\nfinal_rf <- finalize_model(tune_spec,\n                           best_acc)\n\n\n\nFinalisation du workflow\n\nfinal_wf <- workflow() %>%\n  add_recipe(df_rec) %>%\n  add_model(final_rf)\n\n\n\n\nEntraînement du modèle finale\n\nfinal_res <- final_wf %>%\n  last_fit(data_split) # train sur train et evalue sur test"
+    "text": "Exemple Classification\nSélection du meilleur modèle\n\n\nbest_acc <- select_best(regular_res, \"accuracy\")\n\nfinal_rf <- finalize_model(tune_spec,\n                           best_acc)\n\n\n\nFinalisation du workflow\n\nfinal_wf <- workflow() %>%\n  add_recipe(df_rec) %>%\n  add_model(final_rf)\n\n\n\n\nEntraînement du modèle finale\n\nfinal_res <- final_wf %>%\n  last_fit(data_split) # train sur train et evalue sur test"
   },
   {
     "objectID": "site_R.html#exemple-classification-9",
@@ -368,7 +368,7 @@
     "href": "site_R.html#exemple-de-série-temporelle-11",
     "title": "",
     "section": "Exemple de série temporelle",
-    "text": "Exemple de série temporelle\nmodeltimenous permet de créer une table avec plusieurs modèles afin de faciliter les comparaisons de performances.\n\nmodel_table = modeltime_table(\n  model_arima,\n  model_prophet,\n  workflow_fit_prophet_boost\n)\n\n\n\nOn calibre la table (= prédictions sur la période de test et calcul des résidus)\n\ncalib_table = model_table %>% \n  modeltime_calibrate(testing(split))\n\n\n\n\nOn compare les performances :\n\ncalib_table %>%  modeltime_accuracy()\n\n# A tibble: 3 × 9\n  .model_id .model_desc               .type   mae  mape  mase smape  rmse   rsq\n      <int> <chr>                     <chr> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>\n1         1 ARIMA(2,1,1)(1,0,0)[7]    Test   2.41  8.64 0.994  9.28  3.61 0.359\n2         2 PROPHET                   Test   3.17 11.3  1.31  12.5   4.46 0.433\n3         3 PROPHET W/ XGBOOST ERRORS Test   2.89 10.4  1.19  11.4   3.94 0.140"
+    "text": "Exemple de série temporelle\nmodeltimenous permet de créer une table avec plusieurs modèles afin de faciliter les comparaisons de performances.\n\nmodel_table = modeltime_table(\n  model_arima,\n  model_prophet,\n  workflow_fit_prophet_boost)\n\n\n\nOn calibre la table (= prédictions sur la période de test et calcul des résidus)\n\ncalib_table = model_table %>% \n  modeltime_calibrate(testing(split))\n\n\n\n\nOn compare les performances :\n\ncalib_table %>%  modeltime_accuracy()\n\n# A tibble: 3 × 9\n  .model_id .model_desc               .type   mae  mape  mase smape  rmse   rsq\n      <int> <chr>                     <chr> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>\n1         1 ARIMA(2,1,1)(1,0,0)[7]    Test   2.41  8.64 0.994  9.28  3.61 0.359\n2         2 PROPHET                   Test   3.17 11.3  1.31  12.5   4.46 0.433\n3         3 PROPHET W/ XGBOOST ERRORS Test   2.89 10.4  1.19  11.4   3.94 0.140"
   },
   {
     "objectID": "site_R.html#exemple-de-série-temporelle-12",
@@ -382,7 +382,7 @@
     "href": "site_R.html#exemple-de-série-temporelle-13",
     "title": "",
     "section": "Exemple de série temporelle",
-    "text": "Exemple de série temporelle\nPour prédire sur des données futures, on entraine le modèle une dernière fois sur l’ensemble des données :\n\nfuture_forecast = calib_table %>% \n  modeltime_refit(ts_data) \n\n\n\nOn applique notre modèle à +15 jours :\n\nfuture_pred = future_forecast %>% \n  modeltime_forecast(\n    h = '15 days',\n    actual_data = ts_data\n  )"
+    "text": "Exemple de série temporelle\nPour prédire sur des données futures, on entraine le modèle une dernière fois sur l’ensemble des données :\n\nfuture_forecast = calib_table %>% \n  modeltime_refit(ts_data) \n\n\n\nOn applique notre modèle à +15 jours :\n\nfuture_pred = future_forecast %>% \n  modeltime_forecast(\n    h = '15 days',\n    actual_data = ts_data)"
   },
   {
     "objectID": "site_R.html#exemple-de-série-temporelle-14",
@@ -396,6 +396,6 @@
     "href": "site_R.html#merci",
     "title": "",
     "section": "Merci !",
-    "text": "Merci !\nLien de la présentation :    https://github.com/clementrx/site_r\n\nLiens utiles :\nPour étudier Tidymodel : Tidy Modeling with R\n \nPour voir des exemples d’utilisation en vidéos :\n   <Julia Silge>\n   <Andrew Couch>"
+    "text": "Merci !\nLien de la présentation :    https://github.com/clementrx/site_r\n\nLiens utiles :\nPour étudier Tidymodel : Tidy Modeling with R\n \nPour voir des exemples d’utilisation en vidéos :\n   Julia Silge\n   Andrew Couch"
   }
 ]

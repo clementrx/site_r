@@ -826,7 +826,7 @@ regular_res %>%
 
 ## Exemple Classification
 
-Sélecttion du meilleur modèle
+Sélection du meilleur modèle
 
 <br>
 
@@ -1222,8 +1222,7 @@ workflow_fit_prophet_boost <- workflow() %>%
 model_table = modeltime_table(
   model_arima,
   model_prophet,
-  workflow_fit_prophet_boost
-)
+  workflow_fit_prophet_boost)
 ```
 
 . . .
@@ -1283,8 +1282,7 @@ On applique notre modèle à +15 jours :
 future_pred = future_forecast %>% 
   modeltime_forecast(
     h = '15 days',
-    actual_data = ts_data
-  )
+    actual_data = ts_data)
 ```
 
 ## Exemple de série temporelle
