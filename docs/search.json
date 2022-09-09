@@ -18,7 +18,7 @@
     "href": "site_R.html#tidymodels-2",
     "title": "",
     "section": "Tidymodels",
-    "text": "Tidymodels\n\ntidymodels est une collection de packages de modélisation qui est semblable à tidyverse. Créé par l’auteur de caret : Max Kuhn. La version 1.0.0 est disponible depuis le 13 juillet 2022.\n\n\n\nrsample : Data splitting et resampling\nbroom : Manipulation des données output\nrecipes : Préparation des données avant modélisation\nparsnip : Collection de modèles\nyardstick : Evaluation metrics\ndials/tune : Tuning des paramètres\nworklows : Création de workflow …"
+    "text": "Tidymodels\n\ntidymodels est une collection de packages de modélisation qui est semblable à tidyverse. Créé par l’auteur de caret : Max Kuhn. La version 1.0.0 est disponible depuis le 13 juillet 2022.\n\n\n\nrsample : Data splitting et resampling\nrecipes : Préparation des données avant modélisation\nparsnip : Collection de modèles\nyardstick : Evaluation metrics\nbroom : Manipulation des données output\ndials/tune : Tuning des paramètres\nworklows : Création de workflow …"
   },
   {
     "objectID": "site_R.html#tidymodels-vs-caret",
@@ -81,21 +81,21 @@
     "href": "site_R.html#exemple-de-classification",
     "title": "",
     "section": "Exemple de classification",
-    "text": "Exemple de classification\nDonnées\n\nReplication Data for: Using machine learning methods to predict physical activity types with Apple Watch and Fitbit data using indirect calorimetry as the criterion. Fuller Daniel, 2020.\n  \nL’objectif est de prédire depuis les données d’une montre connectée, si la personne la personne est allongée, assise, ou pratique une activté physique selon plusieurs intensité.\n\nLien de la publication: ici"
+    "text": "Exemple de classification\nDonnées\n\nReplication Data for: Using machine learning methods to predict physical activity types with Apple Watch and Fitbit data using indirect calorimetry as the criterion. Fuller Daniel, 2020.\n  \nL’objectif est de prédire depuis les données d’une montre connectée, si la personne est allongée, assise, ou pratique une activté physique selon plusieurs intensités.\n\nLien de la publication: ici"
   },
   {
     "objectID": "site_R.html#exemple-de-classification-1",
     "href": "site_R.html#exemple-de-classification-1",
     "title": "",
     "section": "Exemple de classification",
-    "text": "Exemple de classification\nLe protocol de test est composé de 40min de tapis roulant et 25min de position assise/allongée.  Les données sont collectées toutes les minutes. \nNous avons 6 activités à détecter :\n\nLying : Position allongée\nsitting : Position assise\nwalking self-paced : Marcher à son rythme\n3 METS : Equivalent métabolique 3 fois supérieur à un niveau assis\n5 METS : Equivalent métabolique 5 fois supérieur à un niveau assis\n7 METS : Equivalent métabolique 7 fois supérieur à un niveau assis\n\n\nLa publication de Daniel Fuller montre que le Rotation forest models est celui qui donne la meilleure accuracy avec 82,6%."
+    "text": "Exemple de classification\nLe protocol de test est composé de 40min de tapis roulant et 25min de position assise/allongée.  Les données sont collectées toutes les minutes. \n\nNous avons 6 activités à détecter :\n\nLying : Position allongée\nsitting : Position assise\nwalking self-paced : Marcher à son rythme\n3 METS : Equivalent métabolique 3 fois supérieur à un niveau assis\n5 METS : Equivalent métabolique 5 fois supérieur à un niveau assis\n7 METS : Equivalent métabolique 7 fois supérieur à un niveau assis\n\n\n\n\nLa publication de Daniel Fuller montre que le Rotation forest models est celui qui donne la meilleure accuracy avec 82,6%."
   },
   {
     "objectID": "site_R.html#exemple-de-classification-2",
     "href": "site_R.html#exemple-de-classification-2",
     "title": "",
     "section": "Exemple de classification",
-    "text": "Exemple de classification\n\n\n\n\n\nDonnées\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nage\ngender\nheight\nweight\nsteps\nhear_rate\ncalories\ndistance\nentropy_heart\nentropy_setps\nresting_heart\ncorr_heart_steps\nnorm_heart\nintensity_karvonen\nsd_norm_heart\nsteps_times_distance\ndevice\nactivity\n\n\n\n\n20\n1\n168\n65.4\n10.77143\n78.53130\n0.3445329\n0.0083269\n6.221612\n6.116349\n59\n1.0000000\n19.53130\n0.1385199\n1.000000\n0.0896921\napple watch\nLying\n\n\n20\n1\n168\n65.4\n11.47532\n78.45339\n3.2876255\n0.0088963\n6.221612\n6.116349\n59\n1.0000000\n19.45339\n0.1379673\n1.000000\n0.1020885\napple watch\nLying\n\n\n20\n1\n168\n65.4\n12.17922\n78.54083\n9.4840000\n0.0094658\n6.221612\n6.116349\n59\n1.0000000\n19.54083\n0.1385874\n1.000000\n0.1152865\napple watch\nLying\n\n\n20\n1\n168\n65.4\n12.88312\n78.62826\n10.1545556\n0.0100353\n6.221612\n6.116349\n59\n1.0000000\n19.62826\n0.1392075\n1.000000\n0.1292863\napple watch\nLying\n\n\n20\n1\n168\n65.4\n13.58701\n78.71569\n10.8251111\n0.0106048\n6.221612\n6.116349\n59\n0.9828157\n19.71569\n0.1398276\n0.241567\n0.1440877\napple watch\nLying\n\n\n20\n1\n168\n65.4\n14.29091\n78.80313\n11.4956667\n0.0111743\n6.221612\n6.116349\n59\n1.0000000\n19.80313\n0.1404477\n0.264722\n0.1596909\napple watch\nSitting"
+    "text": "Exemple de classification\n\n\n\n\n\nDonnées\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nage\ngender\nheight\nweight\nsteps\nhear_rate\ncalories\ndistance\nentropy_heart\nentropy_setps\nresting_heart\ncorr_heart_steps\nnorm_heart\nintensity_karvonen\nsd_norm_heart\nsteps_times_distance\ndevice\nactivity\n\n\n\n\n20\nwoman\n168\n65.4\n10.77143\n78.53130\n0.3445329\n0.0083269\n6.221612\n6.116349\n59\n1.0000000\n19.53130\n0.1385199\n1.000000\n0.0896921\napple watch\nLying\n\n\n20\nwoman\n168\n65.4\n11.47532\n78.45339\n3.2876255\n0.0088963\n6.221612\n6.116349\n59\n1.0000000\n19.45339\n0.1379673\n1.000000\n0.1020885\napple watch\nLying\n\n\n20\nwoman\n168\n65.4\n12.17922\n78.54083\n9.4840000\n0.0094658\n6.221612\n6.116349\n59\n1.0000000\n19.54083\n0.1385874\n1.000000\n0.1152865\napple watch\nLying\n\n\n20\nwoman\n168\n65.4\n12.88312\n78.62826\n10.1545556\n0.0100353\n6.221612\n6.116349\n59\n1.0000000\n19.62826\n0.1392075\n1.000000\n0.1292863\napple watch\nLying\n\n\n20\nwoman\n168\n65.4\n13.58701\n78.71569\n10.8251111\n0.0106048\n6.221612\n6.116349\n59\n0.9828157\n19.71569\n0.1398276\n0.241567\n0.1440877\napple watch\nLying\n\n\n20\nwoman\n168\n65.4\n14.29091\n78.80313\n11.4956667\n0.0111743\n6.221612\n6.116349\n59\n1.0000000\n19.80313\n0.1404477\n0.264722\n0.1596909\napple watch\nSitting"
   },
   {
     "objectID": "site_R.html#exemple-de-classification-3",
@@ -116,81 +116,25 @@
     "href": "site_R.html#exemple-de-classification-5",
     "title": "",
     "section": "Exemple de classification",
-    "text": "Exemple de classification\nEnsuite, nous allons définir notre modèle :\n\nsummary(df_rec)\n\n# A tibble: 18 × 4\n   variable             type    role      source  \n   <chr>                <chr>   <chr>     <chr>   \n 1 age                  numeric predictor original\n 2 gender               numeric predictor original\n 3 height               numeric predictor original\n 4 weight               numeric predictor original\n 5 steps                numeric predictor original\n 6 hear_rate            numeric predictor original\n 7 calories             numeric predictor original\n 8 distance             numeric predictor original\n 9 entropy_heart        numeric predictor original\n10 entropy_setps        numeric predictor original\n11 resting_heart        numeric predictor original\n12 corr_heart_steps     numeric predictor original\n13 norm_heart           numeric predictor original\n14 intensity_karvonen   numeric predictor original\n15 sd_norm_heart        numeric predictor original\n16 steps_times_distance numeric predictor original\n17 device               nominal predictor original\n18 activity             nominal outcome   original"
+    "text": "Exemple de classification\nEnsuite, nous allons définir notre modèle :\n\nsummary(df_rec)\n\n# A tibble: 18 × 4\n   variable             type    role      source  \n   <chr>                <chr>   <chr>     <chr>   \n 1 age                  numeric predictor original\n 2 gender               nominal predictor original\n 3 height               numeric predictor original\n 4 weight               numeric predictor original\n 5 steps                numeric predictor original\n 6 hear_rate            numeric predictor original\n 7 calories             numeric predictor original\n 8 distance             numeric predictor original\n 9 entropy_heart        numeric predictor original\n10 entropy_setps        numeric predictor original\n11 resting_heart        numeric predictor original\n12 corr_heart_steps     numeric predictor original\n13 norm_heart           numeric predictor original\n14 intensity_karvonen   numeric predictor original\n15 sd_norm_heart        numeric predictor original\n16 steps_times_distance numeric predictor original\n17 device               nominal predictor original\n18 activity             nominal outcome   original"
   },
   {
     "objectID": "site_R.html#exemple-de-classification-6",
     "href": "site_R.html#exemple-de-classification-6",
     "title": "",
     "section": "Exemple de classification",
-    "text": "Exemple de classification\nLe recipient va nous permettre de faire tout le pre-processing avant la modélisation :\n\n\ndf_rec = recipe(activity ~ . , data = train_data)"
+    "text": "Exemple de classification\nLa recette va nous permettre de faire tout le pre-processing avant la modélisation :\n\n\ndf_rec = recipe(activity ~ . , data = train_data)\n\n\n\n\ndf_rec = recipe(activity ~ . , data = train_data) %>% \n  step_rm(device) %>% \n  step_string2factor(gender) %>% \n  step_normalize(all_numeric()) %>% \n  step_dummy(all_nominal_predictors()) %>% \n  step_zv(all_numeric()) %>% \n  step_corr(all_numeric_predictors(), threshold = 0.7)"
   },
   {
     "objectID": "site_R.html#exemple-de-classification-7",
     "href": "site_R.html#exemple-de-classification-7",
     "title": "",
     "section": "Exemple de classification",
-    "text": "Exemple de classification\nLe recipient va nous permettre de faire tout le pre-processing avant la modélisation :\n\n\ndf_rec = recipe(activity ~ . , data = train_data) %>% \n  step_num2factor(gender,\n                  transform = function(x) x + 1,\n                  levels = c('femme', 'homme'))"
+    "text": "Exemple de classification\nRegardons à quoi ressemble nos données après transformation\n\n\nencoded = df_rec %>%\n  prep() %>%\n  juice()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nage\nweight\nsteps\ncalories\nentropy_heart\nentropy_setps\nresting_heart\ncorr_heart_steps\nnorm_heart\nsd_norm_heart\nsteps_times_distance\nactivity\ngender_woman\n\n\n\n\n-1.040763\n-0.3697346\n-0.6229780\n0.6097959\n0.4528588\n0.3606604\n-0.806288\n1.344866\n-0.1425708\n-0.7808465\n-0.3534188\nLying\n1\n\n\n-1.040763\n-0.3697346\n-0.6204065\n0.7022291\n0.4528588\n0.3606604\n-0.806288\n1.321581\n-0.1389498\n-0.8558210\n-0.3532882\nLying\n1\n\n\n-1.040763\n-0.3697346\n-0.5766909\n1.3325475\n0.4528588\n0.3606604\n-0.806288\n1.344866\n-0.0773928\n-0.8535320\n-0.3499853\nLying\n1\n\n\n-1.040763\n-0.3697346\n-0.5715479\n1.3292048\n0.4528588\n0.3606604\n-0.806288\n1.344866\n-0.0701508\n-0.8535320\n-0.3494623\nLying\n1\n\n\n-1.040763\n-0.3697346\n-0.5664048\n1.3258620\n0.4528588\n0.3606604\n-0.806288\n1.344866\n-0.0629088\n-0.8535320\n-0.3489110\nLying\n1\n\n\n-1.040763\n-0.3697346\n-0.6006315\n1.6465117\n0.4528588\n0.3606604\n-0.806288\n-1.365160\n-0.0085939\n-0.8535320\n-0.3522278\nLying\n1"
   },
   {
     "objectID": "site_R.html#exemple-de-classification-8",
     "href": "site_R.html#exemple-de-classification-8",
-    "title": "",
-    "section": "Exemple de classification",
-    "text": "Exemple de classification\nLe recipient va nous permettre de faire tout le pre-processing avant la modélisation :\n\n\ndf_rec = recipe(activity ~ . , data = train_data) %>% \n  step_num2factor(gender,\n                  transform = function(x) x + 1,\n                  levels = c('femme', 'homme')) %>% \n  step_rm(device)"
-  },
-  {
-    "objectID": "site_R.html#exemple-de-classification-9",
-    "href": "site_R.html#exemple-de-classification-9",
-    "title": "",
-    "section": "Exemple de classification",
-    "text": "Exemple de classification\nLe recipient va nous permettre de faire tout le pre-processing avant la modélisation :\n\n\ndf_rec = recipe(activity ~ . , data = train_data) %>% \n  step_num2factor(gender,\n                  transform = function(x) x + 1,\n                  levels = c('femme', 'homme')) %>% \n  step_rm(device) %>% \n  step_dummy(all_nominal_predictors())"
-  },
-  {
-    "objectID": "site_R.html#exemple-de-classification-10",
-    "href": "site_R.html#exemple-de-classification-10",
-    "title": "",
-    "section": "Exemple de classification",
-    "text": "Exemple de classification\nLe recipient va nous permettre de faire tout le pre-processing avant la modélisation :\n\n\ndf_rec = recipe(activity ~ . , data = train_data) %>% \n  step_num2factor(gender,\n                  transform = function(x) x + 1,\n                  levels = c('femme', 'homme')) %>% \n  step_rm(device) %>% \n  step_dummy(all_nominal_predictors()) %>% \n  step_normalize(all_numeric())"
-  },
-  {
-    "objectID": "site_R.html#exemple-de-classification-11",
-    "href": "site_R.html#exemple-de-classification-11",
-    "title": "",
-    "section": "Exemple de classification",
-    "text": "Exemple de classification\nLe recipient va nous permettre de faire tout le pre-processing avant la modélisation :\n\n\ndf_rec = recipe(activity ~ . , data = train_data) %>% \n  step_num2factor(gender,\n                  transform = function(x) x + 1,\n                  levels = c('femme', 'homme')) %>% \n  step_rm(device) %>% \n  step_dummy(all_nominal_predictors()) %>% \n  step_normalize(all_numeric()) %>% \n  step_zv(all_numeric())"
-  },
-  {
-    "objectID": "site_R.html#exemple-de-classification-12",
-    "href": "site_R.html#exemple-de-classification-12",
-    "title": "",
-    "section": "Exemple de classification",
-    "text": "Exemple de classification\nLe recipient va nous permettre de faire tout le pre-processing avant la modélisation :\n\n\ndf_rec = recipe(activity ~ . , data = train_data) %>% \n  step_num2factor(gender,\n                  transform = function(x) x + 1,\n                  levels = c('femme', 'homme')) %>% \n  step_rm(device) %>% \n  step_dummy(all_nominal_predictors()) %>% \n  step_normalize(all_numeric()) %>% \n  step_zv(all_numeric()) %>% \n  step_corr(all_numeric_predictors(), threshold = 0.7)"
-  },
-  {
-    "objectID": "site_R.html#exemple-de-classification-13",
-    "href": "site_R.html#exemple-de-classification-13",
-    "title": "",
-    "section": "Exemple de classification",
-    "text": "Exemple de classification\nLe recipient va nous permettre de faire tout le pre-processing avant la modélisation :\n\n\ndf_rec = recipe(activity ~ . , data = train_data) %>% \n  step_num2factor(gender,\n                  transform = function(x) x + 1,\n                  levels = c('femme', 'homme')) %>% \n  step_rm(device) %>% \n  step_dummy(all_nominal_predictors()) %>% \n  step_normalize(all_numeric()) %>% \n  step_zv(all_numeric()) %>% \n  step_corr(all_numeric_predictors(), threshold = 0.7)"
-  },
-  {
-    "objectID": "site_R.html#exemple-de-classification-14",
-    "href": "site_R.html#exemple-de-classification-14",
-    "title": "",
-    "section": "Exemple de classification",
-    "text": "Exemple de classification\nLe recipient va nous permettre de faire tout le pre-processing avant la modélisation :\n\n\ndf_rec = recipe(activity ~ . , data = train_data) %>% \n  step_num2factor(gender,\n                  transform = function(x) x + 1,\n                  levels = c('femme', 'homme')) %>% \n  step_rm(device) %>% \n  step_normalize(all_numeric()) %>% \n  step_dummy(all_nominal_predictors()) %>% \n  step_zv(all_numeric()) %>% \n  step_corr(all_numeric_predictors(), threshold = 0.7)"
-  },
-  {
-    "objectID": "site_R.html#exemple-de-classification-15",
-    "href": "site_R.html#exemple-de-classification-15",
-    "title": "",
-    "section": "Exemple de classification",
-    "text": "Exemple de classification\nRegardons à quoi ressemble nos données après transformation\n\n\nencoded = df_rec %>%\n  prep() %>%\n  juice()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nage\nweight\nsteps\ncalories\nentropy_heart\nentropy_setps\nresting_heart\ncorr_heart_steps\nnorm_heart\nsd_norm_heart\nsteps_times_distance\nactivity\ngender_homme\n\n\n\n\n-1.040763\n-0.3697346\n-0.6229780\n0.6097959\n0.4528588\n0.3606604\n-0.806288\n1.344866\n-0.1425708\n-0.7808465\n-0.3534188\nLying\n1\n\n\n-1.040763\n-0.3697346\n-0.6204065\n0.7022291\n0.4528588\n0.3606604\n-0.806288\n1.321581\n-0.1389498\n-0.8558210\n-0.3532882\nLying\n1\n\n\n-1.040763\n-0.3697346\n-0.5766909\n1.3325475\n0.4528588\n0.3606604\n-0.806288\n1.344866\n-0.0773928\n-0.8535320\n-0.3499853\nLying\n1\n\n\n-1.040763\n-0.3697346\n-0.5715479\n1.3292048\n0.4528588\n0.3606604\n-0.806288\n1.344866\n-0.0701508\n-0.8535320\n-0.3494623\nLying\n1\n\n\n-1.040763\n-0.3697346\n-0.5664048\n1.3258620\n0.4528588\n0.3606604\n-0.806288\n1.344866\n-0.0629088\n-0.8535320\n-0.3489110\nLying\n1\n\n\n-1.040763\n-0.3697346\n-0.6006315\n1.6465117\n0.4528588\n0.3606604\n-0.806288\n-1.365160\n-0.0085939\n-0.8535320\n-0.3522278\nLying\n1"
-  },
-  {
-    "objectID": "site_R.html#exemple-de-classification-16",
-    "href": "site_R.html#exemple-de-classification-16",
     "title": "",
     "section": "Exemple de classification",
     "text": "Exemple de classification\nOn utilise un modèle Random forest pour notre exemple\n\n\nrf_spec <- rand_forest(trees = 200) %>% \n  set_engine(\"ranger\") %>% \n  set_mode(\"classification\")\n\n\n\nCréation du workflow\n\nactivity_wflow <- workflow() %>% \n  add_recipe(df_rec) %>% \n  add_model(rf_spec)\n\n\n\n\nEntraînement du modèle\n\nactivty_fit <- activity_wflow %>% \n  fit(data = train_data)"
@@ -200,14 +144,14 @@
     "href": "site_R.html#exemple-classification",
     "title": "",
     "section": "Exemple Classification",
-    "text": "Exemple Classification\n\nOn prédit les activités avec augment, ce qui va nous permettre de récupérer également les probabilités que le modèle associe à chaque classe.\n\n\nactivity_pred <- augment(activty_fit,\n                         test_data)\n\n\n\n\ntable = activity_pred %>%\n  select(activity, \n         contains(\".pred_\"))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nactivity\n.pred_class\n.pred_Lying\n.pred_Running 3 METs\n.pred_Running 5 METs\n.pred_Running 7 METs\n.pred_Self Pace walk\n.pred_Sitting\n\n\n\n\nLying\nLying\n0.5199722\n0.0536382\n0.0296733\n0.0725972\n0.1206989\n0.2034202\n\n\nLying\nLying\n0.5017044\n0.0464623\n0.0162143\n0.0694583\n0.1029171\n0.2632436\n\n\nLying\nLying\n0.4507321\n0.0414407\n0.0155536\n0.0532103\n0.1706725\n0.2683908\n\n\nSitting\nSitting\n0.2156188\n0.0245234\n0.0111587\n0.0124028\n0.2751515\n0.4611447\n\n\nSitting\nSitting\n0.1942796\n0.0290095\n0.0097222\n0.0101310\n0.3108517\n0.4460060\n\n\nSitting\nSelf Pace walk\n0.1127209\n0.0375897\n0.0072222\n0.0013393\n0.5754295\n0.2656985"
+    "text": "Exemple Classification\n\nOn prédit les activités avec augment, ce qui va nous permettre de récupérer également les probabilités que le modèle associe à chaque classe.\n\n\nactivity_pred <- augment(activty_fit,\n                         test_data)\n\n\n\n\ntable = activity_pred %>%\n  select(activity, \n         contains(\".pred_\"))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nactivity\n.pred_class\n.pred_Lying\n.pred_Running 3 METs\n.pred_Running 5 METs\n.pred_Running 7 METs\n.pred_Self Pace walk\n.pred_Sitting\n\n\n\n\nLying\nLying\n0.5612758\n0.0527341\n0.0263909\n0.0877599\n0.1398810\n0.1319583\n\n\nLying\nLying\n0.5628214\n0.0550119\n0.0216250\n0.0671548\n0.1198929\n0.1734940\n\n\nLying\nLying\n0.5068968\n0.0505595\n0.0281250\n0.0756587\n0.1250298\n0.2137302\n\n\nSitting\nSitting\n0.2392202\n0.0265595\n0.0249306\n0.0101627\n0.2512356\n0.4478913\n\n\nSitting\nSitting\n0.1667659\n0.0326151\n0.0281369\n0.0048948\n0.3273011\n0.4402862\n\n\nSitting\nSelf Pace walk\n0.1029385\n0.0238651\n0.0231111\n0.0050060\n0.5466622\n0.2984171"
   },
   {
     "objectID": "site_R.html#exemple-classification-1",
     "href": "site_R.html#exemple-classification-1",
     "title": "",
     "section": "Exemple Classification",
-    "text": "Exemple Classification\nPerformances\nLe package yardstick va servir à calculer les performances :\n\n\nactivity_pred %>% \n  accuracy(truth = as.factor(activity), .pred_class)\n\n# A tibble: 1 × 3\n  .metric  .estimator .estimate\n  <chr>    <chr>          <dbl>\n1 accuracy multiclass     0.799"
+    "text": "Exemple Classification\nPerformances\nLe package yardstick va servir à calculer les performances :\n\n\nactivity_pred %>% \n  accuracy(truth = as.factor(activity), .pred_class)\n\n# A tibble: 1 × 3\n  .metric  .estimator .estimate\n  <chr>    <chr>          <dbl>\n1 accuracy multiclass     0.786"
   },
   {
     "objectID": "site_R.html#exemple-classification-2",
@@ -228,14 +172,14 @@
     "href": "site_R.html#exemple-classification-4",
     "title": "",
     "section": "Exemple Classification",
-    "text": "Exemple Classification\nAfin de choisir certains paramètres, on peut également tuner notre modèle\n\n\ntune_spec <- rand_forest(mtry = tune(),\n                         trees = 200,\n                         min_n = tune()) %>%\n  set_mode(\"classification\") %>%\n  set_engine(\"ranger\")\n\n\n\n\ntune_wf <- workflow() %>%\n  add_recipe(df_rec) %>% \n  add_model(tune_spec)\n\n\n\n\n\n\n\n\nset.seed(100)\ncv_folds <- vfold_cv(train_data, \n                     v = 3, \n                     strata = activity) \n\n\n\n\n\nset.seed(345)\ntune_res <- tune_grid(\n  tune_wf,\n  resamples = cv_folds,\n  grid = 20)"
+    "text": "Exemple Classification\nAfin de choisir certains paramètres, on peut également tuner notre modèle\n\n\ntune_spec <- rand_forest(mtry = tune(),\n                         trees = 200,\n                         min_n = tune()) %>%\n  set_mode(\"classification\") %>%\n  set_engine(\"ranger\")\n\n\n\n\ntune_wf <- workflow() %>%\n  add_recipe(df_rec) %>% \n  add_model(tune_spec)\n\n\n\n\n\n\n\n\nset.seed(100)\ncv_folds <- vfold_cv(train_data, \n                     v = 3, \n                     strata = activity) \n\n\n\n\n\nset.seed(333)\ntune_res <- tune_grid(\n  tune_wf,\n  resamples = cv_folds,\n  grid = 20)"
   },
   {
     "objectID": "site_R.html#exemple-classification-5",
     "href": "site_R.html#exemple-classification-5",
     "title": "",
     "section": "Exemple Classification",
-    "text": "Exemple Classification\n\ntune_res %>%\n  collect_metrics() %>%\n  filter(.metric == \"accuracy\") %>%\n  select(mean, min_n, mtry) %>%\n  pivot_longer(min_n:mtry,\n               values_to = \"value\",\n               names_to = \"parameter\") %>%\n  ggplot(aes(value, mean, color = parameter)) +\n  geom_point(show.legend = FALSE) +\n  facet_wrap(~parameter, scales = \"free_x\") +\n  labs(x = NULL, y = \"ACC\")"
+    "text": "Exemple Classification\n\ntune_res %>%\n  autoplot()"
   },
   {
     "objectID": "site_R.html#exemple-classification-6",
@@ -249,7 +193,7 @@
     "href": "site_R.html#exemple-classification-7",
     "title": "",
     "section": "Exemple Classification",
-    "text": "Exemple Classification\n\nregular_res %>%\n  collect_metrics() %>%\n  filter(.metric == \"accuracy\") %>%\n  select(mean, min_n, mtry) %>%\n  pivot_longer(min_n:mtry,\n               values_to = \"value\",\n               names_to = \"parameter\") %>%\n  ggplot(aes(value, mean, color = parameter)) +\n  geom_point(show.legend = FALSE) +\n  facet_wrap(~parameter, scales = \"free_x\") +\n  labs(x = NULL, y = \"ACC\")"
+    "text": "Exemple Classification\n\nregular_res %>%\n  autoplot()"
   },
   {
     "objectID": "site_R.html#exemple-classification-8",
@@ -284,7 +228,7 @@
     "href": "site_R.html#exemple-classification-12",
     "title": "",
     "section": "Exemple Classification",
-    "text": "Exemple Classification\nEnregistrement du modèle\n\nfinal_activity_model = final_res %>%\n  extract_workflow()\n\nsaveRDS(final_activity_model, here::here(\"data\", \"activity_wf_model.rds\"))"
+    "text": "Exemple Classification\nEnregistrement du modèle\n\nfinal_activity_model = final_res %>%\n  extract_workflow()\n\nsaveRDS(final_activity_model, here::here(\"data\", \"activity_wf_model.rds\"))\n\n\n\n\nfinal_activity_model\n\n══ Workflow [trained] ══════════════════════════════════════════════════════════\nPreprocessor: Recipe\nModel: rand_forest()\n\n── Preprocessor ────────────────────────────────────────────────────────────────\n6 Recipe Steps\n\n• step_rm()\n• step_string2factor()\n• step_normalize()\n• step_dummy()\n• step_zv()\n• step_corr()\n\n── Model ───────────────────────────────────────────────────────────────────────\nRanger result\n\nCall:\n ranger::ranger(x = maybe_data_frame(x), y = y, mtry = min_cols(~5L,      x), num.trees = ~200, min.node.size = min_rows(~1L, x), num.threads = 1,      verbose = FALSE, seed = sample.int(10^5, 1), probability = TRUE) \n\nType:                             Probability estimation \nNumber of trees:                  200 \nSample size:                      2740 \nNumber of independent variables:  12 \nMtry:                             5 \nTarget node size:                 1 \nVariable importance mode:         none \nSplitrule:                        gini \nOOB prediction error (Brier s.):  0.1872566"
   },
   {
     "objectID": "site_R.html#exemple-de-série-temporelle",
@@ -305,6 +249,13 @@
     "href": "site_R.html#exemple-de-série-temporelle-2",
     "title": "",
     "section": "Exemple de série temporelle",
+    "text": "Exemple de série temporelle\n\nsplit %>% \n  tk_time_series_cv_plan() %>% \n  filter(ds > \"2022-03-01\") %>% \n  plot_time_series_cv_plan(ds, y)"
+  },
+  {
+    "objectID": "site_R.html#exemple-de-série-temporelle-2-output",
+    "href": "site_R.html#exemple-de-série-temporelle-2-output",
+    "title": "",
+    "section": "Exemple de série temporelle",
     "text": "Exemple de série temporelle"
   },
   {
@@ -319,74 +270,46 @@
     "href": "site_R.html#exemple-de-série-temporelle-4",
     "title": "",
     "section": "Exemple de série temporelle",
-    "text": "Exemple de série temporelle\nCependant pour les séries temporelles, une bonne pratique est de tester notre modèle sur plusieurs périodes différentes.\n\n  \nOn va donc créer plusieurs splits de train/test\n\nts_k_folds = rolling_origin(ts_data,\n                            initial = 1600,\n                            assess = 15, \n                            skip = 120)"
+    "text": "Exemple de série temporelle\nUne fois que nous avons trouvé un modèle performant, on l’entraine.\n\nmodel_arima = arima_reg() %>% \n  set_engine(\"auto_arima\") %>% \n  fit(y~ds, training(split))\n\n\n\n\nmodel_prophet  = prophet_reg(\n  prior_scale_changepoints = 0.01,\n  prior_scale_seasonality = 5) %>% \n  set_engine(\"prophet\") %>% \n  fit(y~ds, training(split))\n\n\n\n\n\nmodel_prophet_xgb  = prophet_boost(prior_scale_changepoints = 0.01,\n                                   prior_scale_seasonality = 5) %>%\n  set_engine(\"prophet_xgboost\") \n  \nworkflow_fit_prophet_boost <- workflow() %>%\n    add_model(model_prophet_xgb) %>%\n    add_recipe(recipe_spec) %>%\n    fit(training(split))"
   },
   {
     "objectID": "site_R.html#exemple-de-série-temporelle-5",
     "href": "site_R.html#exemple-de-série-temporelle-5",
     "title": "",
     "section": "Exemple de série temporelle",
-    "text": "Exemple de série temporelle\nCependant pour les séries temporelles, une bonne pratique est de tester notre modèle sur plusieurs périodes différentes.\nOn va donc créer plusieurs splits de train/test"
+    "text": "Exemple de série temporelle\nmodeltimenous permet de créer une table avec plusieurs modèles afin de faciliter les comparaisons de performances.\n\nmodel_table = modeltime_table(\n  model_arima,\n  model_prophet,\n  workflow_fit_prophet_boost)\n\n\n\nOn calibre la table (= prédictions sur la période de test et calcul des résidus)\n\ncalib_table = model_table %>% \n  modeltime_calibrate(testing(split))\n\n\n\n\nOn compare les performances :\n\ncalib_table %>%  modeltime_accuracy()\n\n# A tibble: 3 × 9\n  .model_id .model_desc               .type   mae  mape  mase smape  rmse   rsq\n      <int> <chr>                     <chr> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>\n1         1 ARIMA(2,1,1)(1,0,0)[7]    Test   2.41  8.64 0.994  9.28  3.61 0.359\n2         2 PROPHET                   Test   3.17 11.3  1.31  12.5   4.46 0.433\n3         3 PROPHET W/ XGBOOST ERRORS Test   2.89 10.4  1.19  11.4   3.94 0.140"
   },
   {
     "objectID": "site_R.html#exemple-de-série-temporelle-6",
     "href": "site_R.html#exemple-de-série-temporelle-6",
     "title": "",
     "section": "Exemple de série temporelle",
-    "text": "Exemple de série temporelle\nCréation d’une fonction afin d’itérer un ou plusieurs modèles sur nos différents splits.\n\ntune_prophet = function(splits){\n  \n  train_data = analysis(splits)\n  test_data = assessment(splits)\n  splits_calib <- initial_time_split(train_data, prop = 0.85)\n  \n  model_spec_prophet_boost <- prophet_boost(\n    prior_scale_changepoints = 0.01,\n    prior_scale_seasonality = 5) %>%\n    set_engine(\"prophet_xgboost\") \n  \n  workflow_fit_prophet_boost <- workflow() %>%\n    add_recipe(recipe_spec) %>%\n    add_model(model_spec_prophet_boost) %>%\n    fit(training(splits_calib))\n  \n  calib_table = workflow_fit_prophet_boost %>%  \n    modeltime_calibrate(testing(splits_calib))\n  \n  future_prophet_boost = calib_table %>% \n    modeltime_refit(train_data) %>% \n    modeltime_forecast(new_data = test_data,\n                       actual_data = train_data)\n  \n  m_prophet = prophet::prophet(df = train_data,\n                               seasonality.mode = 'additive',\n                               changepoint.prior.scale = 0.01,\n                               seasonality.prior.scale = 5)\n  \n  future = prophet::make_future_dataframe(m_prophet, periods = nrow(test_data),\n                                          freq = 'day', include_history = FALSE)\n  \n  bind_rows(predict(m_prophet, future) %>% \n              select(ds, yhat) %>% \n              mutate(type = 'prophet'),\n            \n            future_prophet_boost %>% \n              filter(.model_desc != 'ACTUAL') %>% \n              select(ds = .index, yhat = .value) %>% \n              mutate(type = 'prophet_xgb')) %>% \n    \n    left_join(test_data, by = 'ds')\n  \n}"
+    "text": "Exemple de série temporelle\n\ncalib_table %>% \n  modeltime_forecast(\n    new_data = testing(split),\n    actual_data = ts_data,\n    keep_data = T) %>% \n  filter(.index > \"2022-07-10\") %>% \n  plot_modeltime_forecast()"
+  },
+  {
+    "objectID": "site_R.html#exemple-de-série-temporelle-6-output",
+    "href": "site_R.html#exemple-de-série-temporelle-6-output",
+    "title": "",
+    "section": "Exemple de série temporelle",
+    "text": "Exemple de série temporelle"
   },
   {
     "objectID": "site_R.html#exemple-de-série-temporelle-7",
     "href": "site_R.html#exemple-de-série-temporelle-7",
     "title": "",
     "section": "Exemple de série temporelle",
-    "text": "Exemple de série temporelle\nOn test nos modèles sur différentes périodes :\n\nts_tune = ts_k_folds %>% mutate(result = map(splits, tune_prophet))"
+    "text": "Exemple de série temporelle\nPour prédire sur des données futures, on entraine le modèle une dernière fois sur l’ensemble des données :\n\nfuture_forecast = calib_table %>% \n  modeltime_refit(ts_data) \n\n\n\nOn applique notre modèle à +15 jours :\n\nfuture_pred = future_forecast %>% \n  modeltime_forecast(\n    h = '15 days',\n    actual_data = ts_data)"
   },
   {
     "objectID": "site_R.html#exemple-de-série-temporelle-8",
     "href": "site_R.html#exemple-de-série-temporelle-8",
     "title": "",
     "section": "Exemple de série temporelle",
-    "text": "Exemple de série temporelle\nOn peut donc comparer différents modèles :"
+    "text": "Exemple de série temporelle\n\nfuture_pred %>% \n  filter(.index > \"2022-06-10\") %>%\n  plot_modeltime_forecast()"
   },
   {
-    "objectID": "site_R.html#exemple-de-série-temporelle-9",
-    "href": "site_R.html#exemple-de-série-temporelle-9",
-    "title": "",
-    "section": "Exemple de série temporelle",
-    "text": "Exemple de série temporelle"
-  },
-  {
-    "objectID": "site_R.html#exemple-de-série-temporelle-10",
-    "href": "site_R.html#exemple-de-série-temporelle-10",
-    "title": "",
-    "section": "Exemple de série temporelle",
-    "text": "Exemple de série temporelle\nUne fois que nous avons trouvé un modèle performant, on l’entraine.\n\nmodel_arima = arima_reg() %>% \n  set_engine(\"auto_arima\") %>% \n  fit(y~ds, training(split))\n\n\n\n\nmodel_prophet  = prophet_reg(\n  prior_scale_changepoints = 0.01,\n  prior_scale_seasonality = 5) %>% \n  set_engine(\"prophet\") %>% \n  fit(y~ds, training(split))\n\n\n\n\n\nmodel_prophet_xgb  = prophet_boost(prior_scale_changepoints = 0.01,\n                                   prior_scale_seasonality = 5) %>%\n  set_engine(\"prophet_xgboost\") \n  \nworkflow_fit_prophet_boost <- workflow() %>%\n    add_model(model_prophet_xgb) %>%\n    add_recipe(recipe_spec) %>%\n    fit(training(split))"
-  },
-  {
-    "objectID": "site_R.html#exemple-de-série-temporelle-11",
-    "href": "site_R.html#exemple-de-série-temporelle-11",
-    "title": "",
-    "section": "Exemple de série temporelle",
-    "text": "Exemple de série temporelle\nmodeltimenous permet de créer une table avec plusieurs modèles afin de faciliter les comparaisons de performances.\n\nmodel_table = modeltime_table(\n  model_arima,\n  model_prophet,\n  workflow_fit_prophet_boost)\n\n\n\nOn calibre la table (= prédictions sur la période de test et calcul des résidus)\n\ncalib_table = model_table %>% \n  modeltime_calibrate(testing(split))\n\n\n\n\nOn compare les performances :\n\ncalib_table %>%  modeltime_accuracy()\n\n# A tibble: 3 × 9\n  .model_id .model_desc               .type   mae  mape  mase smape  rmse   rsq\n      <int> <chr>                     <chr> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>\n1         1 ARIMA(2,1,1)(1,0,0)[7]    Test   2.41  8.64 0.994  9.28  3.61 0.359\n2         2 PROPHET                   Test   3.17 11.3  1.31  12.5   4.46 0.433\n3         3 PROPHET W/ XGBOOST ERRORS Test   2.89 10.4  1.19  11.4   3.94 0.140"
-  },
-  {
-    "objectID": "site_R.html#exemple-de-série-temporelle-12",
-    "href": "site_R.html#exemple-de-série-temporelle-12",
-    "title": "",
-    "section": "Exemple de série temporelle",
-    "text": "Exemple de série temporelle"
-  },
-  {
-    "objectID": "site_R.html#exemple-de-série-temporelle-13",
-    "href": "site_R.html#exemple-de-série-temporelle-13",
-    "title": "",
-    "section": "Exemple de série temporelle",
-    "text": "Exemple de série temporelle\nPour prédire sur des données futures, on entraine le modèle une dernière fois sur l’ensemble des données :\n\nfuture_forecast = calib_table %>% \n  modeltime_refit(ts_data) \n\n\n\nOn applique notre modèle à +15 jours :\n\nfuture_pred = future_forecast %>% \n  modeltime_forecast(\n    h = '15 days',\n    actual_data = ts_data)"
-  },
-  {
-    "objectID": "site_R.html#exemple-de-série-temporelle-14",
-    "href": "site_R.html#exemple-de-série-temporelle-14",
+    "objectID": "site_R.html#exemple-de-série-temporelle-8-output",
+    "href": "site_R.html#exemple-de-série-temporelle-8-output",
     "title": "",
     "section": "Exemple de série temporelle",
     "text": "Exemple de série temporelle"
@@ -396,6 +319,55 @@
     "href": "site_R.html#merci",
     "title": "",
     "section": "Merci !",
-    "text": "Merci !\nLien de la présentation :    https://github.com/clementrx/site_r\n\nLiens utiles :\nPour étudier Tidymodel : Tidy Modeling with R\n \nPour voir des exemples d’utilisation en vidéos :\n   Julia Silge\n   Andrew Couch"
+    "text": "Merci !\nLien de la présentation :    https://github.com/clementrx/site_r\n\nPour approfondir sur tidymodels\nPour étudier Tidymodels : Tidy Modeling with R\n\nPour voir des exemples d’utilisation en vidéos :\n   Julia Silge\n   Andrew Couch"
+  },
+  {
+    "objectID": "site_R.html#bonus",
+    "href": "site_R.html#bonus",
+    "title": "",
+    "section": "Bonus",
+    "text": "Bonus\nSéries temporelle en cross validation"
+  },
+  {
+    "objectID": "site_R.html#exemple-de-série-temporelle-9",
+    "href": "site_R.html#exemple-de-série-temporelle-9",
+    "title": "",
+    "section": "Exemple de série temporelle",
+    "text": "Exemple de série temporelle\nCependant pour les séries temporelles, une bonne pratique est de tester notre modèle sur plusieurs périodes différentes.\n\n  \nOn va donc créer plusieurs splits de train/test\n\nts_k_folds = rolling_origin(ts_data,\n                            initial = 1600,\n                            assess = 15, \n                            skip = 120)"
+  },
+  {
+    "objectID": "site_R.html#exemple-de-série-temporelle-10",
+    "href": "site_R.html#exemple-de-série-temporelle-10",
+    "title": "",
+    "section": "Exemple de série temporelle",
+    "text": "Exemple de série temporelle\nCependant pour les séries temporelles, une bonne pratique est de tester notre modèle sur plusieurs périodes différentes.\nOn va donc créer plusieurs splits de train/test"
+  },
+  {
+    "objectID": "site_R.html#exemple-de-série-temporelle-11",
+    "href": "site_R.html#exemple-de-série-temporelle-11",
+    "title": "",
+    "section": "Exemple de série temporelle",
+    "text": "Exemple de série temporelle\nCréation d’une fonction afin d’itérer un ou plusieurs modèles sur nos différents splits.\n\ntune_prophet = function(splits){\n  \n  train_data = analysis(splits)\n  test_data = assessment(splits)\n  splits_calib <- initial_time_split(train_data, prop = 0.85)\n  \n  model_spec_prophet_boost <- prophet_boost(\n    prior_scale_changepoints = 0.01,\n    prior_scale_seasonality = 5) %>%\n    set_engine(\"prophet_xgboost\") \n  \n  workflow_fit_prophet_boost <- workflow() %>%\n    add_recipe(recipe_spec) %>%\n    add_model(model_spec_prophet_boost) %>%\n    fit(training(splits_calib))\n  \n  calib_table = workflow_fit_prophet_boost %>%  \n    modeltime_calibrate(testing(splits_calib))\n  \n  future_prophet_boost = calib_table %>% \n    modeltime_refit(train_data) %>% \n    modeltime_forecast(new_data = test_data,\n                       actual_data = train_data)\n  \n  m_prophet = prophet::prophet(df = train_data,\n                               seasonality.mode = 'additive',\n                               changepoint.prior.scale = 0.01,\n                               seasonality.prior.scale = 5)\n  \n  future = prophet::make_future_dataframe(m_prophet, periods = nrow(test_data),\n                                          freq = 'day', include_history = FALSE)\n  \n  bind_rows(predict(m_prophet, future) %>% \n              select(ds, yhat) %>% \n              mutate(type = 'prophet'),\n            \n            future_prophet_boost %>% \n              filter(.model_desc != 'ACTUAL') %>% \n              select(ds = .index, yhat = .value) %>% \n              mutate(type = 'prophet_xgb')) %>% \n    \n    left_join(test_data, by = 'ds')\n  \n}"
+  },
+  {
+    "objectID": "site_R.html#exemple-de-série-temporelle-12",
+    "href": "site_R.html#exemple-de-série-temporelle-12",
+    "title": "",
+    "section": "Exemple de série temporelle",
+    "text": "Exemple de série temporelle\nOn test nos modèles sur différentes périodes :\n\nts_tune = ts_k_folds %>% mutate(result = map(splits, tune_prophet))"
+  },
+  {
+    "objectID": "site_R.html#exemple-de-série-temporelle-13",
+    "href": "site_R.html#exemple-de-série-temporelle-13",
+    "title": "",
+    "section": "Exemple de série temporelle",
+    "text": "Exemple de série temporelle\nOn peut donc comparer différents modèles :"
+  },
+  {
+    "objectID": "site_R.html#exemple-de-série-temporelle-14",
+    "href": "site_R.html#exemple-de-série-temporelle-14",
+    "title": "",
+    "section": "Exemple de série temporelle",
+    "text": "Exemple de série temporelle"
   }
 ]
