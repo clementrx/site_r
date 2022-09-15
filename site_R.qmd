@@ -390,7 +390,8 @@ Le jeu de données étant propre, nous pouvons directement split nos données en
 ```{r}
 set.seed(123)
 data_split <- initial_split(df, 
-                            strata = activity)
+                            strata = activity,
+                            prop = 0.8)
 
 ```
 
@@ -653,10 +654,9 @@ cv_folds <- vfold_cv(train_data,
 
 ```{r}
 set.seed(333)
-tune_res <- tune_grid(
-  tune_wf,
-  resamples = cv_folds,
-  grid = 20)
+tune_res <- tune_grid(tune_wf,
+                      resamples = cv_folds,
+                      grid = 20)
 ```
 
 ## Exemple Classification
@@ -690,9 +690,9 @@ On ajuste notre grille de paramètres :
 <br>
 
 ```{r}
-rf_grid <- grid_regular(min_n(range = c(1, 8)),
-                        mtry(range = c(3, 11)),
-                        levels = 4) # nombre de niveaux par paramètre
+rf_grid <- grid_regular(mtry(range = c(3, 11)),
+                        min_n(range = c(1, 8)),
+                        levels = 4) # nombre de valeurs testées par paramètre
 ```
 
 . . .
@@ -970,7 +970,7 @@ workflow_fit_prophet_boost <- workflow() %>%
 
 ## Exemple de série temporelle
 
-`modeltime`nous permet de créer une *table* avec plusieurs modèles afin de faciliter les comparaisons de performances.
+`modeltime` nous permet de créer une *table* avec plusieurs modèles afin de faciliter les comparaisons de performances.
 
 ```{r}
 model_table = modeltime_table(
@@ -1012,7 +1012,7 @@ calib_table %>%
     new_data = testing(split),
     actual_data = ts_data,
     keep_data = T) %>% 
-  filter(.index > "2022-07-10") %>% 
+  filter(.index > "2022-06-10") %>% 
   plot_modeltime_forecast()
 ```
 

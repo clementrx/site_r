@@ -102,7 +102,7 @@
     "href": "site_R.html#exemple-de-classification-3",
     "title": "",
     "section": "Exemple de classification",
-    "text": "Exemple de classification\nLe jeu de données étant propre, nous pouvons directement split nos données en train/test via la fonction initial_split\n\n\nset.seed(123)\ndata_split <- initial_split(df, \n                            strata = activity)\n\n\n\n\n\ndata_split\n\n<Training/Testing/Total>\n<2740/916/3656>\n\n\n\ntrain_data <- training(data_split) \ntest_data <- testing(data_split)\n\n\n\n\n\nnrow(train_data)\n\n[1] 2740\n\n\n\n\n\nnrow(test_data)\n\n[1] 916"
+    "text": "Exemple de classification\nLe jeu de données étant propre, nous pouvons directement split nos données en train/test via la fonction initial_split\n\n\nset.seed(123)\ndata_split <- initial_split(df, \n                            strata = activity,\n                            prop = 0.8)\n\n\n\n\n\ndata_split\n\n<Training/Testing/Total>\n<2922/734/3656>\n\n\n\ntrain_data <- training(data_split) \ntest_data <- testing(data_split)\n\n\n\n\n\nnrow(train_data)\n\n[1] 2922\n\n\n\n\n\nnrow(test_data)\n\n[1] 734"
   },
   {
     "objectID": "site_R.html#exemple-de-classification-4",
@@ -130,7 +130,7 @@
     "href": "site_R.html#exemple-de-classification-7",
     "title": "",
     "section": "Exemple de classification",
-    "text": "Exemple de classification\nRegardons à quoi ressemble nos données après transformation\n\n\nencoded = df_rec %>%\n  prep() %>%\n  juice()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nage\nweight\nsteps\ncalories\nentropy_heart\nentropy_setps\nresting_heart\ncorr_heart_steps\nnorm_heart\nsd_norm_heart\nsteps_times_distance\nactivity\ngender_woman\n\n\n\n\n-1.040763\n-0.3697346\n-0.6229780\n0.6097959\n0.4528588\n0.3606604\n-0.806288\n1.344866\n-0.1425708\n-0.7808465\n-0.3534188\nLying\n1\n\n\n-1.040763\n-0.3697346\n-0.6204065\n0.7022291\n0.4528588\n0.3606604\n-0.806288\n1.321581\n-0.1389498\n-0.8558210\n-0.3532882\nLying\n1\n\n\n-1.040763\n-0.3697346\n-0.5766909\n1.3325475\n0.4528588\n0.3606604\n-0.806288\n1.344866\n-0.0773928\n-0.8535320\n-0.3499853\nLying\n1\n\n\n-1.040763\n-0.3697346\n-0.5715479\n1.3292048\n0.4528588\n0.3606604\n-0.806288\n1.344866\n-0.0701508\n-0.8535320\n-0.3494623\nLying\n1\n\n\n-1.040763\n-0.3697346\n-0.5664048\n1.3258620\n0.4528588\n0.3606604\n-0.806288\n1.344866\n-0.0629088\n-0.8535320\n-0.3489110\nLying\n1\n\n\n-1.040763\n-0.3697346\n-0.6006315\n1.6465117\n0.4528588\n0.3606604\n-0.806288\n-1.365160\n-0.0085939\n-0.8535320\n-0.3522278\nLying\n1"
+    "text": "Exemple de classification\nRegardons à quoi ressemble nos données après transformation\n\n\nencoded = df_rec %>%\n  prep() %>%\n  juice()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nage\nweight\nsteps\ncalories\nentropy_heart\nentropy_setps\nresting_heart\ncorr_heart_steps\nnorm_heart\nsd_norm_heart\nsteps_times_distance\nactivity\ngender_woman\n\n\n\n\n-1.041208\n-0.3630108\n-0.6283199\n-0.3387966\n0.4567056\n0.3668234\n-0.7754581\n1.332403\n-0.1522931\n-0.7759316\n-0.3541834\nLying\n1\n\n\n-1.041208\n-0.3630108\n-0.6230952\n0.6060653\n0.4567056\n0.3668234\n-0.7754581\n1.332403\n-0.1450037\n-0.7759316\n-0.3539403\nLying\n1\n\n\n-1.041208\n-0.3630108\n-0.6204828\n0.6983310\n0.4567056\n0.3668234\n-0.7754581\n1.309248\n-0.1413590\n-0.8516913\n-0.3538079\nLying\n1\n\n\n-1.041208\n-0.3630108\n-0.5760726\n1.3275076\n0.4567056\n0.3668234\n-0.7754581\n1.332403\n-0.0793986\n-0.8493783\n-0.3504618\nLying\n1\n\n\n-1.041208\n-0.3630108\n-0.5734602\n1.3258393\n0.4567056\n0.3668234\n-0.7754581\n1.332403\n-0.0757539\n-0.8493783\n-0.3502004\nLying\n1\n\n\n-1.041208\n-0.3630108\n-0.5708478\n1.3241709\n0.4567056\n0.3668234\n-0.7754581\n1.332403\n-0.0721092\n-0.8493783\n-0.3499319\nLying\n1"
   },
   {
     "objectID": "site_R.html#exemple-de-classification-8",
@@ -144,14 +144,14 @@
     "href": "site_R.html#exemple-classification",
     "title": "",
     "section": "Exemple Classification",
-    "text": "Exemple Classification\n\nOn prédit les activités avec augment, ce qui va nous permettre de récupérer également les probabilités que le modèle associe à chaque classe.\n\n\nactivity_pred <- augment(activty_fit,\n                         test_data)\n\n\n\n\ntable = activity_pred %>%\n  select(activity, \n         contains(\".pred_\"))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nactivity\n.pred_class\n.pred_Lying\n.pred_Running 3 METs\n.pred_Running 5 METs\n.pred_Running 7 METs\n.pred_Self Pace walk\n.pred_Sitting\n\n\n\n\nLying\nLying\n0.5612758\n0.0527341\n0.0263909\n0.0877599\n0.1398810\n0.1319583\n\n\nLying\nLying\n0.5628214\n0.0550119\n0.0216250\n0.0671548\n0.1198929\n0.1734940\n\n\nLying\nLying\n0.5068968\n0.0505595\n0.0281250\n0.0756587\n0.1250298\n0.2137302\n\n\nSitting\nSitting\n0.2392202\n0.0265595\n0.0249306\n0.0101627\n0.2512356\n0.4478913\n\n\nSitting\nSitting\n0.1667659\n0.0326151\n0.0281369\n0.0048948\n0.3273011\n0.4402862\n\n\nSitting\nSelf Pace walk\n0.1029385\n0.0238651\n0.0231111\n0.0050060\n0.5466622\n0.2984171"
+    "text": "Exemple Classification\n\nOn prédit les activités avec augment, ce qui va nous permettre de récupérer également les probabilités que le modèle associe à chaque classe.\n\n\nactivity_pred <- augment(activty_fit,\n                         test_data)\n\n\n\n\ntable = activity_pred %>%\n  select(activity, \n         contains(\".pred_\"))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nactivity\n.pred_class\n.pred_Lying\n.pred_Running 3 METs\n.pred_Running 5 METs\n.pred_Running 7 METs\n.pred_Self Pace walk\n.pred_Sitting\n\n\n\n\nLying\nLying\n0.6327107\n0.0507697\n0.0338254\n0.0435119\n0.1047516\n0.1344307\n\n\nLying\nLying\n0.5467818\n0.0354880\n0.0144841\n0.0569524\n0.1186456\n0.2276481\n\n\nSitting\nSitting\n0.2043730\n0.0206139\n0.0193175\n0.0155833\n0.1934807\n0.5466316\n\n\nSitting\nSitting\n0.1253014\n0.0269072\n0.0103651\n0.0167202\n0.3170674\n0.5036387\n\n\nSelf Pace walk\nSelf Pace walk\n0.1350079\n0.0523599\n0.0030556\n0.0030000\n0.7724133\n0.0341634\n\n\nSelf Pace walk\nSelf Pace walk\n0.1573968\n0.0589849\n0.0068056\n0.0030000\n0.7393160\n0.0344967"
   },
   {
     "objectID": "site_R.html#exemple-classification-1",
     "href": "site_R.html#exemple-classification-1",
     "title": "",
     "section": "Exemple Classification",
-    "text": "Exemple Classification\nPerformances\nLe package yardstick va servir à calculer les performances :\n\n\nactivity_pred %>% \n  accuracy(truth = as.factor(activity), .pred_class)\n\n# A tibble: 1 × 3\n  .metric  .estimator .estimate\n  <chr>    <chr>          <dbl>\n1 accuracy multiclass     0.786"
+    "text": "Exemple Classification\nPerformances\nLe package yardstick va servir à calculer les performances :\n\n\nactivity_pred %>% \n  accuracy(truth = as.factor(activity), .pred_class)\n\n# A tibble: 1 × 3\n  .metric  .estimator .estimate\n  <chr>    <chr>          <dbl>\n1 accuracy multiclass     0.808"
   },
   {
     "objectID": "site_R.html#exemple-classification-2",
@@ -172,7 +172,7 @@
     "href": "site_R.html#exemple-classification-4",
     "title": "",
     "section": "Exemple Classification",
-    "text": "Exemple Classification\nAfin de choisir certains paramètres, on peut également tuner notre modèle\n\n\ntune_spec <- rand_forest(mtry = tune(),\n                         trees = 200,\n                         min_n = tune()) %>%\n  set_mode(\"classification\") %>%\n  set_engine(\"ranger\")\n\n\n\n\ntune_wf <- workflow() %>%\n  add_recipe(df_rec) %>% \n  add_model(tune_spec)\n\n\n\n\n\n\n\n\nset.seed(100)\ncv_folds <- vfold_cv(train_data, \n                     v = 3, \n                     strata = activity) \n\n\n\n\n\nset.seed(333)\ntune_res <- tune_grid(\n  tune_wf,\n  resamples = cv_folds,\n  grid = 20)"
+    "text": "Exemple Classification\nAfin de choisir certains paramètres, on peut également tuner notre modèle\n\n\ntune_spec <- rand_forest(mtry = tune(),\n                         trees = 200,\n                         min_n = tune()) %>%\n  set_mode(\"classification\") %>%\n  set_engine(\"ranger\")\n\n\n\n\ntune_wf <- workflow() %>%\n  add_recipe(df_rec) %>% \n  add_model(tune_spec)\n\n\n\n\n\n\n\n\nset.seed(100)\ncv_folds <- vfold_cv(train_data, \n                     v = 3, \n                     strata = activity) \n\n\n\n\n\nset.seed(333)\ntune_res <- tune_grid(tune_wf,\n                      resamples = cv_folds,\n                      grid = 20)"
   },
   {
     "objectID": "site_R.html#exemple-classification-5",
@@ -186,7 +186,7 @@
     "href": "site_R.html#exemple-classification-6",
     "title": "",
     "section": "Exemple Classification",
-    "text": "Exemple Classification\nOn ajuste notre grille de paramètres :\n\n\nrf_grid <- grid_regular(min_n(range = c(1, 8)),\n                        mtry(range = c(3, 11)),\n                        levels = 4) # nombre de niveaux par paramètre\n\n\n\n\nset.seed(456)\nregular_res <- tune_grid(tune_wf,\n                         resamples = cv_folds,\n                         grid = rf_grid)"
+    "text": "Exemple Classification\nOn ajuste notre grille de paramètres :\n\n\nrf_grid <- grid_regular(mtry(range = c(3, 11)),\n                        min_n(range = c(1, 8)),\n                        levels = 4) # nombre de valeurs testées par paramètre\n\n\n\n\nset.seed(456)\nregular_res <- tune_grid(tune_wf,\n                         resamples = cv_folds,\n                         grid = rf_grid)"
   },
   {
     "objectID": "site_R.html#exemple-classification-7",
@@ -207,7 +207,7 @@
     "href": "site_R.html#exemple-classification-9",
     "title": "",
     "section": "Exemple Classification",
-    "text": "Exemple Classification\n\nRésultat final sur notre jeu de données :\n\n\nfinal_res %>% \n  collect_metrics()\n\n# A tibble: 2 × 4\n  .metric  .estimator .estimate .config             \n  <chr>    <chr>          <dbl> <chr>               \n1 accuracy multiclass     0.810 Preprocessor1_Model1\n2 roc_auc  hand_till      0.970 Preprocessor1_Model1"
+    "text": "Exemple Classification\n\nRésultat final sur notre jeu de données :\n\n\nfinal_res %>% \n  collect_metrics()\n\n# A tibble: 2 × 4\n  .metric  .estimator .estimate .config             \n  <chr>    <chr>          <dbl> <chr>               \n1 accuracy multiclass     0.822 Preprocessor1_Model1\n2 roc_auc  hand_till      0.974 Preprocessor1_Model1"
   },
   {
     "objectID": "site_R.html#exemple-classification-10",
@@ -228,7 +228,7 @@
     "href": "site_R.html#exemple-classification-12",
     "title": "",
     "section": "Exemple Classification",
-    "text": "Exemple Classification\nEnregistrement du modèle\n\nfinal_activity_model = final_res %>%\n  extract_workflow()\n\nsaveRDS(final_activity_model, here::here(\"data\", \"activity_wf_model.rds\"))\n\n\n\n\nfinal_activity_model\n\n══ Workflow [trained] ══════════════════════════════════════════════════════════\nPreprocessor: Recipe\nModel: rand_forest()\n\n── Preprocessor ────────────────────────────────────────────────────────────────\n6 Recipe Steps\n\n• step_rm()\n• step_string2factor()\n• step_normalize()\n• step_dummy()\n• step_zv()\n• step_corr()\n\n── Model ───────────────────────────────────────────────────────────────────────\nRanger result\n\nCall:\n ranger::ranger(x = maybe_data_frame(x), y = y, mtry = min_cols(~5L,      x), num.trees = ~200, min.node.size = min_rows(~1L, x), num.threads = 1,      verbose = FALSE, seed = sample.int(10^5, 1), probability = TRUE) \n\nType:                             Probability estimation \nNumber of trees:                  200 \nSample size:                      2740 \nNumber of independent variables:  12 \nMtry:                             5 \nTarget node size:                 1 \nVariable importance mode:         none \nSplitrule:                        gini \nOOB prediction error (Brier s.):  0.1872566"
+    "text": "Exemple Classification\nEnregistrement du modèle\n\nfinal_activity_model = final_res %>%\n  extract_workflow()\n\nsaveRDS(final_activity_model, here::here(\"data\", \"activity_wf_model.rds\"))\n\n\n\n\nfinal_activity_model\n\n══ Workflow [trained] ══════════════════════════════════════════════════════════\nPreprocessor: Recipe\nModel: rand_forest()\n\n── Preprocessor ────────────────────────────────────────────────────────────────\n6 Recipe Steps\n\n• step_rm()\n• step_string2factor()\n• step_normalize()\n• step_dummy()\n• step_zv()\n• step_corr()\n\n── Model ───────────────────────────────────────────────────────────────────────\nRanger result\n\nCall:\n ranger::ranger(x = maybe_data_frame(x), y = y, mtry = min_cols(~5L,      x), num.trees = ~200, min.node.size = min_rows(~1L, x), num.threads = 1,      verbose = FALSE, seed = sample.int(10^5, 1), probability = TRUE) \n\nType:                             Probability estimation \nNumber of trees:                  200 \nSample size:                      2922 \nNumber of independent variables:  12 \nMtry:                             5 \nTarget node size:                 1 \nVariable importance mode:         none \nSplitrule:                        gini \nOOB prediction error (Brier s.):  0.1793104"
   },
   {
     "objectID": "site_R.html#exemple-de-série-temporelle",
@@ -277,14 +277,14 @@
     "href": "site_R.html#exemple-de-série-temporelle-5",
     "title": "",
     "section": "Exemple de série temporelle",
-    "text": "Exemple de série temporelle\nmodeltimenous permet de créer une table avec plusieurs modèles afin de faciliter les comparaisons de performances.\n\nmodel_table = modeltime_table(\n  model_arima,\n  model_prophet,\n  workflow_fit_prophet_boost)\n\n\n\nOn calibre la table (= prédictions sur la période de test et calcul des résidus)\n\ncalib_table = model_table %>% \n  modeltime_calibrate(testing(split))\n\n\n\n\nOn compare les performances :\n\ncalib_table %>%  modeltime_accuracy()\n\n# A tibble: 3 × 9\n  .model_id .model_desc               .type   mae  mape  mase smape  rmse   rsq\n      <int> <chr>                     <chr> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>\n1         1 ARIMA(2,1,1)(1,0,0)[7]    Test   2.41  8.64 0.994  9.28  3.61 0.359\n2         2 PROPHET                   Test   3.17 11.3  1.31  12.5   4.46 0.433\n3         3 PROPHET W/ XGBOOST ERRORS Test   2.89 10.4  1.19  11.4   3.94 0.140"
+    "text": "Exemple de série temporelle\nmodeltime nous permet de créer une table avec plusieurs modèles afin de faciliter les comparaisons de performances.\n\nmodel_table = modeltime_table(\n  model_arima,\n  model_prophet,\n  workflow_fit_prophet_boost)\n\n\n\nOn calibre la table (= prédictions sur la période de test et calcul des résidus)\n\ncalib_table = model_table %>% \n  modeltime_calibrate(testing(split))\n\n\n\n\nOn compare les performances :\n\ncalib_table %>%  modeltime_accuracy()\n\n# A tibble: 3 × 9\n  .model_id .model_desc               .type   mae  mape  mase smape  rmse   rsq\n      <int> <chr>                     <chr> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>\n1         1 ARIMA(2,1,1)(1,0,0)[7]    Test   2.41  8.64 0.994  9.28  3.61 0.359\n2         2 PROPHET                   Test   3.17 11.3  1.31  12.5   4.46 0.433\n3         3 PROPHET W/ XGBOOST ERRORS Test   2.89 10.4  1.19  11.4   3.94 0.140"
   },
   {
     "objectID": "site_R.html#exemple-de-série-temporelle-6",
     "href": "site_R.html#exemple-de-série-temporelle-6",
     "title": "",
     "section": "Exemple de série temporelle",
-    "text": "Exemple de série temporelle\n\ncalib_table %>% \n  modeltime_forecast(\n    new_data = testing(split),\n    actual_data = ts_data,\n    keep_data = T) %>% \n  filter(.index > \"2022-07-10\") %>% \n  plot_modeltime_forecast()"
+    "text": "Exemple de série temporelle\n\ncalib_table %>% \n  modeltime_forecast(\n    new_data = testing(split),\n    actual_data = ts_data,\n    keep_data = T) %>% \n  filter(.index > \"2022-06-10\") %>% \n  plot_modeltime_forecast()"
   },
   {
     "objectID": "site_R.html#exemple-de-série-temporelle-6-output",
