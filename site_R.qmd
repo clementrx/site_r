@@ -528,7 +528,7 @@ activity_wflow <- workflow() %>%
 Entraînement du modèle
 
 ```{r}
-activty_fit <- activity_wflow %>% 
+activity_fit <- activity_wflow %>% 
   fit(data = train_data)
 ```
 
@@ -541,7 +541,7 @@ On prédit les activités avec `augment`, ce qui va nous permettre de récupére
 <br>
 
 ```{r}
-activity_pred <- augment(activty_fit,
+activity_pred <- augment(activity_fit,
                          test_data)
 ```
 
@@ -899,7 +899,7 @@ split %>%
 
 ## Exemple de série temporelle
 
-Comme pour la classification nous pouvons créer une récipient pour créer des nouvelles features. 
+Comme pour la classification nous pouvons créer une recette pour créer des nouvelles features. 
 
 On pourrait également imaginer d'ajouter des régresseurs à notre jeu de données initial afin d'améliorer notre modèle.
 
