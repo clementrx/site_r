@@ -235,7 +235,7 @@
     "href": "site_R.html#exemple-de-série-temporelle",
     "title": "",
     "section": "Exemple de série temporelle",
-    "text": "Exemple de série temporelle\nPour les séries temporelles nous avons besoin de quelques library supplémentaires.\n\nConcernant les données, nous avons web scrap les données historiques de la ville de Paris depuis le site historique meteo.\n\nIl s’agit des températures moyennes par jour (en degrès celsius) du 1er janvier 2010 au 31 juillet 2022.\n\n\n\n\n\n\nlibrary(modeltime)\nlibrary(timetk)\nlibrary(lubridate)\nlibrary(ggblanket)\n\n\n\n\n\n\n\nds\ny\n\n\n\n\n2022-07-26\n21.0\n\n\n2022-07-27\n21.5\n\n\n2022-07-28\n23.0\n\n\n2022-07-29\n25.0\n\n\n2022-07-30\n25.5\n\n\n2022-07-31\n23.5"
+    "text": "Exemple de série temporelle\nPour les séries temporelles nous avons besoin de quelques library supplémentaires.\n\nConcernant les données, nous avons web scrap les données historiques de la ville de Paris depuis le site historique meteo.\n\nIl s’agit des températures moyennes par jour (en degrès celsius) du 1er janvier 2010 au 31 juillet 2022.\n\n\n\n\n\n\nlibrary(modeltime)\nlibrary(timetk)\nlibrary(lubridate)\n\n\n\n\n\n\n\nds\ny\n\n\n\n\n2022-07-26\n21.0\n\n\n2022-07-27\n21.5\n\n\n2022-07-28\n23.0\n\n\n2022-07-29\n25.0\n\n\n2022-07-30\n25.5\n\n\n2022-07-31\n23.5"
   },
   {
     "objectID": "site_R.html#exemple-de-série-temporelle-1",

@@ -860,7 +860,6 @@ ts_data <- ts_data %>%
 library(modeltime)
 library(timetk)
 library(lubridate)
-library(ggblanket)
 ```
 :::
 
@@ -1103,6 +1102,9 @@ On va donc créer plusieurs splits de train/test
 #| output-location: slide
 #| fig-width: 20
 #| fig-height: 8
+
+library(ggblanket)
+
 ts_k_folds  %>%  
   mutate(train = map(splits, analysis),
          test = map(splits, assessment)) %>%
